@@ -1,1 +1,1 @@
-export const SAMSURL = 'https://www.sams.com.mx/';
+export const SAMS_HOME_URL = 'https://www.sams.com.mx/';
