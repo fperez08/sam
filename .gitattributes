@@ -1,0 +1,6 @@
+.editorconfig linguist-generated=true
+.eslintignore linguist-generated=true
+.eslintrc.json linguist-generated=true
+.prettierrc.cjs linguist-generated=true
+package.json linguist-generated=true
+
