@@ -19,14 +19,8 @@ export default class WebBrowserManager {
       const page = await this.createPage(browser);
       return {browser, page};
     } catch (error) {
-      const launchError = new LaunchBrowserError(
-        'An error occurred while launching the browser or create the page'
-      );
-      console.error(
-        '🚀 ~ WebBrowserManager ~ launchBrowser ~ launchError:',
-        launchError.message
-      );
-      return launchError;
+      console.error('🚀 ~ WebBrowserManager ~ launchBrowser ~ error:', error);
+      return new LaunchBrowserError();
     }
   }
 
