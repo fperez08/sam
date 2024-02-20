@@ -11,14 +11,14 @@ export default class HttpClient {
     this.config = config;
     this.axiosInstance = axios.create();
   }
-  public async get(url: string): Promise<AxiosResponse | undefined> {
+  protected async get(url: string): Promise<AxiosResponse | AxiosError> {
     try {
       const response = await this.axiosInstance.get(url, this.config);
       return response;
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.toJSON());
-      return axiosError.response;
+      return axiosError;
     }
   }
 }
