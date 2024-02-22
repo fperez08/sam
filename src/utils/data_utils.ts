@@ -1,5 +1,5 @@
 const jp = require('jsonpath');
-export function listTransform(
+export function extractDataFromArray(
   data: Array<object>,
   transformer: {[key: string]: string}
 ): Array<object> {
@@ -19,4 +19,18 @@ export function listTransform(
     result.push(newData);
   });
   return result;
+}
+
+export function mergeObjects<T>(obj1: T, obj2: T): T {
+  const mergedObject = {...obj1};
+
+  for (const prop in obj2) {
+    if (Object.prototype.hasOwnProperty.call(obj2, prop)) {
+      if (obj2[prop] !== '') {
+        mergedObject[prop] = obj2[prop];
+      }
+    }
+  }
+
+  return mergedObject;
 }
