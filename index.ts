@@ -1,16 +1,13 @@
-import type {AxiosRequestConfig, AxiosResponse} from 'axios';
+import type {AxiosResponse} from 'axios';
 import SamsDataManager from './src/data/sams_data';
 import type {SaleItemRaw} from './src/models/sams_data_models';
 import SamsService from './src/services/sams/sams_services';
 import {extractDataFromArray} from './src/utils/data_utils';
-import {SAMS_HOME_URL} from './src/constants/urls';
+import {SAMS_SERVICE_CONFIG} from './src/config/sams_request_config';
 const jp = require('jsonpath');
 const salesQuery = require('./src/data/sams_sales_query.json');
-const samsServiceConfig =
-  require('./src/config/sams_request_config.json') as AxiosRequestConfig;
-samsServiceConfig.baseURL = SAMS_HOME_URL;
 
-const samsService = new SamsService(samsServiceConfig);
+const samsService = new SamsService(SAMS_SERVICE_CONFIG);
 const samsData = new SamsDataManager();
 console.log('Starting sales');
 
