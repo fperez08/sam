@@ -1,21 +1,30 @@
+import type {AxiosRequestConfig, AxiosResponse} from 'axios';
 import SamsDataManager from './src/data/sams_data';
 import type {SaleItemRaw} from './src/models/sams_data_models';
+import SamsService from './src/services/sams/sams_services';
 import {extractDataFromArray} from './src/utils/data_utils';
+import {SAMS_HOME_URL} from './src/constants/urls';
 const jp = require('jsonpath');
-const data = require('./data.json');
+const salesQuery = require('./src/data/sams_sales_query.json');
+const samsServiceConfig =
+  require('./src/config/sams_request_config.json') as AxiosRequestConfig;
+samsServiceConfig.baseURL = SAMS_HOME_URL;
 
-const productAttributes = jp.query(data, '$..attributes');
+const samsService = new SamsService(samsServiceConfig);
 const samsData = new SamsDataManager();
-const transformedData = extractDataFromArray(productAttributes, {
-  name: '$.skuDisplayName',
-  displayName: "$['product.displayName']",
-  lastPrice: "$['sku.lastPrice']",
-  finalPrice: "$['sku.finalPrice']",
-  productPromotions: "$['product.promotions']",
-  saleRemainingTime: '$.eventRemainingTime',
-  saleExpiresAt: '$.eventExpiresAt',
-  status: 'STR0000009999',
-}) as SaleItemRaw[];
-const salesData = samsData.cleanSalesData(transformedData);
-const formattedSalesData = samsData.formatSalesData(salesData);
-console.log(formattedSalesData);
+console.log('Starting sales');
+
+const response = await samsService.getSales();
+if ((response as AxiosResponse).data) {
+  const data = (response as AxiosResponse).data;
+  const productAttributes = jp.query(data, '$..attributes');
+  const transformedData = extractDataFromArray(
+    productAttributes,
+    salesQuery
+  ) as SaleItemRaw[];
+  const salesData = samsData.cleanSalesData(transformedData);
+  const formattedSalesData = samsData.formatSalesData(salesData);
+  console.log(formattedSalesData);
+} else {
+  console.error('Something went wrong...:(');
+}
