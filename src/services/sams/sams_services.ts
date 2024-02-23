@@ -5,7 +5,7 @@ export default class SamsService extends HttpClient {
   constructor(config: AxiosRequestConfig) {
     super(config);
   }
-  public getSales(): Promise<AxiosResponse | AxiosError> {
-    return this.get('sams/department/rebajas/_/N-akm');
+  public async getSales(): Promise<AxiosResponse | AxiosError> {
+    return await this.get('sams/department/rebajas/_/N-akm');
   }
 }
