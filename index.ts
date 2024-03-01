@@ -11,9 +11,10 @@ const salesQuery = require('./src/data/sams_sales_query.json');
 
 const samsService = new SamsService(SAMS_SERVICE_CONFIG);
 const samsData = new SamsDataManager();
-console.log('Starting sales');
+console.log('Starting Sams WebScraper...');
 
 const response = await samsService.getSales();
+console.log('Response get from sales...');
 if ((response as AxiosResponse).data) {
   const data = (response as AxiosResponse).data;
   const productAttributes = jp.query(data, '$..attributes');
@@ -23,11 +24,8 @@ if ((response as AxiosResponse).data) {
   ) as SaleItemRaw[];
   const salesData = samsData.cleanSalesData(transformedData);
   const formattedSalesData = samsData.formatSalesData(salesData);
-  try {
-    await DBService.storeData('sales', formattedSalesData);
-  } catch (error) {
-    console.error((error as Error).message);
-  }
+  console.log('Saving the data: ', formattedSalesData);
+  DBService.storeSalesData(1, formattedSalesData);
 } else {
   console.error('Something went wrong...:(');
 }

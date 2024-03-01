@@ -1,29 +1,20 @@
-import {Pool} from 'pg';
 import type {SaleItem} from '../models/sams_data_models';
+import {Database} from 'bun:sqlite';
 class DataBaseService {
-  private pool: Pool;
+  private db: Database;
   constructor() {
-    this.pool = new Pool({
-      user: process.env.DB_USER,
-      host: 'localhost',
-      database: 'sam',
-      password: process.env.DB_PASSWORD,
-      port: 5432,
-    });
+    this.db = new Database(process.env.DB_PATH);
   }
 
-  public async storeData(id: string, data: SaleItem[]) {
-    const client = await this.pool.connect();
+  public storeSalesData(id: number, data: SaleItem[]) {
     try {
-      await client.query('INSERT INTO sams_sales (id, data) VALUES ($1, $2)', [
+      this.db.run('INSERT OR REPLACE INTO sales (id, data) VALUES (?, ?)', [
         id,
         JSON.stringify(data),
       ]);
-      console.log('Data stored successfully!');
     } catch (error) {
-      console.error('Error storing data:', error);
-    } finally {
-      client.release();
+      console.error((error as Error).message);
+      throw error;
     }
   }
 }
