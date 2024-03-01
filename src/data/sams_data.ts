@@ -28,6 +28,11 @@ export default class SamsDataManager {
     });
   }
 
+  /**
+   * Merge the data of sales items when is duplicate in two consecutive objects
+   * @param SaleItem array
+   * @returns Array of unique SalesItem objects
+   */
   public formatSalesData(data: SaleItem[]): SaleItem[] {
     if (data.length === 0) return [];
     const result: SaleItem[] = [];

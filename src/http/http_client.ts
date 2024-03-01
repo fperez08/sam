@@ -11,6 +11,11 @@ export default class HttpClient {
     this.config = config;
     this.axiosInstance = axios.create();
   }
+  /**
+   * Makes a GET request to the specified URL using the specified configuration.
+   * @param url - The URL to make the GET request to.
+   * @returns A Promise that resolves to an AxiosResponse or rejects with an AxiosError.
+   */
   protected async get(url: string): Promise<AxiosResponse | AxiosError> {
     try {
       const response = await this.axiosInstance.get(url, this.config);
