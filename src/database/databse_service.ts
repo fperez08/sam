@@ -6,6 +6,11 @@ class DataBaseService {
     this.db = new Database(process.env.DB_PATH);
   }
 
+  /**
+   * Inserts or replaces a record in the sales table.
+   * @param id the record id
+   * @param data the record data
+   */
   public storeSalesData(id: number, data: SaleItem[]) {
     try {
       this.db.run('INSERT OR REPLACE INTO sales (id, data) VALUES (?, ?)', [

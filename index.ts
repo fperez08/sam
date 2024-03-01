@@ -24,8 +24,12 @@ if ((response as AxiosResponse).data) {
   ) as SaleItemRaw[];
   const salesData = samsData.cleanSalesData(transformedData);
   const formattedSalesData = samsData.formatSalesData(salesData);
-  console.log('Saving the data: ', formattedSalesData);
-  DBService.storeSalesData(1, formattedSalesData);
+  const filteredData = jp.query(
+    formattedSalesData,
+    '$[?(@.status == "SELLABLE")]'
+  );
+  console.log('Saving the data: ', filteredData);
+  DBService.storeSalesData(1, filteredData);
 } else {
   console.error('Something went wrong...:(');
 }
