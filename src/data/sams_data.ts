@@ -30,15 +30,15 @@ export default class SamsDataManager {
 
   /**
    * Merge the data of sales items when is duplicate in two consecutive objects
-   * @param SaleItem array
-   * @returns Array of unique SalesItem objects
+   * @param {SaleItem[]} data - Array of SalesItem objects.
+   * @returns {SaleItem[]} - Array of unique SalesItem objects
    */
   public formatSalesData(data: SaleItem[]): SaleItem[] {
     if (data.length === 0) return [];
-    const result: SaleItem[] = [];
+    const uniqueSalesData: SaleItem[] = [];
     for (let index = 0; index < data.length; index += 2) {
-      result.push(mergeObjects(data[index], data[index + 1]));
+      uniqueSalesData.push(mergeObjects(data[index], data[index + 1]));
     }
-    return result;
+    return uniqueSalesData;
   }
 }
