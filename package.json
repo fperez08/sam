@@ -19,7 +19,8 @@
     "@types/pg": "^8.11.2",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
-    "jsonpath": "^1.1.1"
+    "jsonpath": "^1.1.1",
+    "nodemailer": "^6.9.11"
   },
   "scripts": {
     "lint": "gts lint",
