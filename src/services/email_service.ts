@@ -3,17 +3,17 @@ import type Mail from 'nodemailer/lib/mailer';
 import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 class EmailService {
   private transporter: Transporter;
-  constructor(transporterConfig: SMTPTransport.Options) {
-    this.transporter = nodemailer.createTransport(transporterConfig);
+  constructor(transporterOptions: SMTPTransport.Options) {
+    this.transporter = nodemailer.createTransport(transporterOptions);
   }
 
   /**
    * Sends an email using the configured transporter.
    *
-   * @param {Mail.Options} mailOptions - The options for the email to be sent.
+   * @param {Mail.Options} emailOptions - The options for the email to be sent.
    */
-  public sendEmail(mailOptions: Mail.Options) {
-    this.transporter.sendMail(mailOptions, (error, info) => {
+  public sendEmail(emailOptions: Mail.Options) {
+    this.transporter.sendMail(emailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email: ', error);
       } else {
