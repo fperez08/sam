@@ -4,7 +4,7 @@ import type {SaleItemRaw} from './src/models/sams_data_models';
 import SamsService from './src/services/sams/sams_services';
 import {extractDataFromArray} from './src/utils/data_utils';
 import {SAMS_SERVICE_CONFIG} from './src/config/sams_request_config';
-import {DBService} from './src/database/databse_service';
+//import {DBService} from './src/database/databse_service';
 import EmailService from './src/services/email_service';
 import {generateHtmlTable} from './src/utils/html';
 import type Mail from 'nodemailer/lib/mailer';
@@ -70,8 +70,7 @@ if ((response as AxiosResponse).data) {
     const emailService = new EmailService(transporterConfig);
     emailService.sendEmail(emailOptions);
   }
-  console.log('Saving the data: ', finalSalesData);
-  DBService.storeSalesData(1, finalSalesData);
+  //DBService.storeSalesData(1, finalSalesData);
 } else {
   console.error('Something went wrong...:(');
 }
