@@ -3,6 +3,7 @@ import axios, {
   type AxiosResponse,
   type AxiosError,
 } from 'axios';
+require('axios-debug-log');
 
 export default class HttpClient {
   protected config: AxiosRequestConfig;
