@@ -7,6 +7,8 @@ export interface SaleItem {
   saleRemainingTime: string;
   saleExpiresAt: string;
   status: string;
+  discount?: string;
+  priceDifference?: string;
 }
 
 export interface SaleItemRaw {

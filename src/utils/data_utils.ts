@@ -46,3 +46,16 @@ export function mergeObjects<T>(obj1: T, obj2: T): T {
 
   return mergedObject;
 }
+
+/**
+ * Converts a Unix timestamp to a date string in the format "DD/MM/YYYY".
+ * @param timeStamp - The Unix timestamp to convert.
+ * @returns The date string.
+ */
+export function convertTimeStampToDate(timeStamp: number): string {
+  const date = new Date(timeStamp);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}

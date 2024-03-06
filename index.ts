@@ -28,8 +28,12 @@ if ((response as AxiosResponse).data) {
     formattedSalesData,
     '$[?(@.status == "SELLABLE")]'
   );
-  console.log('Saving the data: ', filteredData);
-  DBService.storeSalesData(1, filteredData);
+  const discountedData = samsData.calculateItemsDiscount(filteredData);
+  const finalSalesData = samsData.convertItemTimeStampToDate(
+    discountedData.filter(item => item.saleExpiresAt)
+  );
+  console.log('Saving the data: ', finalSalesData);
+  DBService.storeSalesData(1, finalSalesData);
 } else {
   console.error('Something went wrong...:(');
 }
