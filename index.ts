@@ -24,7 +24,7 @@ const transporterConfig = {
     pass: process.env.FROM_EMAIL_PASSWORD,
   },
 };
-const mailOptions: Mail.Options = {
+const emailOptions: Mail.Options = {
   from: process.env.FROM_EMAIL,
   to: process.env.TO_EMAIL,
   subject: 'Products on Sale',
@@ -65,10 +65,10 @@ if ((response as AxiosResponse).data) {
       'discount',
       'priceDifference',
     ]);
-    mailOptions.html = table;
+    emailOptions.html = table;
     console.log('Sending email...');
     const emailService = new EmailService(transporterConfig);
-    emailService.sendEmail(mailOptions);
+    emailService.sendEmail(emailOptions);
   }
   console.log('Saving the data: ', finalSalesData);
   DBService.storeSalesData(1, finalSalesData);

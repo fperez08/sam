@@ -1,4 +1,4 @@
-import {revertCamelCase} from './string';
+import {invertCase} from './string';
 
 /**
  * Generate an HTML table from a JSON array.
@@ -21,7 +21,7 @@ export function generateHtmlTable(
   // Table headers
   htmlTable += '<tr>';
   for (const header of tableHeaders) {
-    htmlTable += `<th style="border: 1px solid #dddddd; padding: 8px;">${revertCamelCase(header)}</th>`;
+    htmlTable += `<th style="border: 1px solid #dddddd; padding: 8px;">${invertCase(header)}</th>`;
   }
   htmlTable += '</tr>';
 
