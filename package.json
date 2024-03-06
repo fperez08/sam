@@ -18,6 +18,7 @@
   "dependencies": {
     "@types/pg": "^8.11.2",
     "axios": "^1.6.7",
+    "axios-debug-log": "^1.0.0",
     "dotenv": "^16.4.5",
     "jsonpath": "^1.1.1",
     "nodemailer": "^6.9.11"
@@ -29,6 +30,7 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "start": "DEBUG=axios bun run index.ts"
   }
 }
