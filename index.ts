@@ -56,6 +56,10 @@ if ((response as AxiosResponse).data) {
     }
   });
   if (saleItemsWithHigDiscount.length > 0) {
+    saleItemsWithHigDiscount.sort(
+      (a, b) => parseInt(b.discount as string) - parseInt(a.discount as string)
+    );
+    console.log('🚀 ~ saleItemsWithHigDiscount:', saleItemsWithHigDiscount);
     const table = generateHtmlTable(saleItemsWithHigDiscount, [
       'name',
       'displayName',
