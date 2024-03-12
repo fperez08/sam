@@ -1,17 +1,4 @@
 export interface SaleItem {
-  name: string;
-  displayName: string;
-  lastPrice: string;
-  finalPrice: string;
-  productPromotions: string;
-  saleRemainingTime: string;
-  saleExpiresAt: string;
-  status: string;
-  discount?: string;
-  priceDifference?: string;
-}
-
-export interface SaleItemRaw {
   name: string[];
   displayName: string[];
   lastPrice: string[];
@@ -19,5 +6,10 @@ export interface SaleItemRaw {
   productPromotions: string[];
   saleRemainingTime: string[];
   saleExpiresAt: string[];
-  status: string[];
+  discount?: string;
+  priceDifference?: string;
+}
+
+export interface SaleItemAttributes {
+  [key: string]: unknown;
 }

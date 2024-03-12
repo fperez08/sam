@@ -1,4 +1,4 @@
-import {mergeObjects, extractDataFromArray} from '../src/utils/data_utils';
+import {mergeObjects, extractDataFromArray} from '../src/utils/helper';
 import {describe, test, expect} from 'bun:test';
 describe('mergeObjects', () => {
   test('should merge two objects with the same properties and values', () => {

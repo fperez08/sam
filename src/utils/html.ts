@@ -29,7 +29,10 @@ export function generateHtmlTable(
   for (const item of jsonArray) {
     htmlTable += '<tr>';
     for (const header of tableHeaders) {
-      htmlTable += `<td style="border: 1px solid #dddddd; padding: 8px;">${item[header]}</td>`;
+      const value = Array.isArray(item[header])
+        ? item[header].join(',')
+        : item[header];
+      htmlTable += `<td style="border: 1px solid #dddddd; padding: 8px;">${value}</td>`;
     }
     htmlTable += '</tr>';
   }
