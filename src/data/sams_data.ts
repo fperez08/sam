@@ -1,45 +1,54 @@
-import type {SaleItem, SaleItemRaw} from '../models/sams_data_models';
-import {mergeObjects, convertTimeStampToDate} from '../utils/data_utils';
-
+import type {SaleItem, SaleItemAttributes} from '../models/sams_data_models';
+import {getPropertyValue, convertTimeStampToDate, pipe} from '../utils/helper';
 export default class SamsDataManager {
-  /**
-   * Cleans the sales data by removing unnecessary properties and ensuring that the
-   * most important properties are present.
-   *
-   * @param data - the raw sales data to be cleaned
-   * @returns the cleaned sales data
-   */
-  public cleanSalesData(data: SaleItemRaw[]): SaleItem[] {
+  private data: SaleItemAttributes[];
+  constructor(data: SaleItemAttributes[]) {
+    this.checkIsEmpty(data);
+    this.data = this.mergeSalesItemsAttributes(data);
+  }
+  private checkIsEmpty(data: SaleItemAttributes[]) {
+    if (data.length === 0) throw Error('Empty data passed to SamsDataManager');
+  }
+
+  private mergeSalesItemsAttributes(data: SaleItemAttributes[]) {
+    const mergedSalesItemAttributes = [];
+    for (let index = 0; index < data.length; index += 2) {
+      mergedSalesItemAttributes.push({
+        ...data[index],
+        ...data[index + 1],
+      });
+    }
+    return mergedSalesItemAttributes;
+  }
+
+  public getSalesItemsForEmail(): SaleItem[] {
+    const salesItemsInStock = this.data.filter(
+      item =>
+        !Object.prototype.hasOwnProperty.call(
+          item,
+          'No_Disponible_and_Remind_Me'
+        )
+    );
+    const saleItems = this.getDataForEmail(salesItemsInStock);
+    return pipe(
+      this.calculateItemsDiscount,
+      this.convertItemTimeStampToDate
+    )(saleItems);
+  }
+
+  private getDataForEmail(data: SaleItemAttributes[]): SaleItem[] {
     if (data.length === 0) return [];
     return data.map(item => {
       return {
-        name: item.name.length > 0 ? item.name[0] : '',
-        displayName: item.displayName.length > 0 ? item.displayName[0] : '',
-        lastPrice: item.lastPrice.length > 0 ? item.lastPrice[0] : '',
-        finalPrice: item.finalPrice.length > 0 ? item.finalPrice[0] : '',
-        productPromotions:
-          item.productPromotions.length > 0 ? item.productPromotions[0] : '',
-        saleRemainingTime:
-          item.saleRemainingTime.length > 0 ? item.saleRemainingTime[0] : '',
-        saleExpiresAt:
-          item.saleExpiresAt.length > 0 ? item.saleExpiresAt[0] : '',
-        status: item.status.length > 0 ? item.status[0] : '',
+        name: getPropertyValue(item, 'skuDisplayName'),
+        displayName: getPropertyValue(item, 'product.displayName'),
+        lastPrice: getPropertyValue(item, 'sku.lastPrice'),
+        finalPrice: getPropertyValue(item, 'sku.finalPrice'),
+        productPromotions: getPropertyValue(item, 'product.promotions'),
+        saleRemainingTime: getPropertyValue(item, 'eventRemainingTime'),
+        saleExpiresAt: getPropertyValue(item, 'eventExpiresAt'),
       };
-    });
-  }
-
-  /**
-   * Merge the data of sales items when is duplicate in two consecutive objects
-   * @param {SaleItem[]} data - Array of SalesItem objects.
-   * @returns {SaleItem[]} - Array of unique SalesItem objects
-   */
-  public formatSalesData(data: SaleItem[]): SaleItem[] {
-    if (data.length === 0) return [];
-    const uniqueSalesData: SaleItem[] = [];
-    for (let index = 0; index < data.length; index += 2) {
-      uniqueSalesData.push(mergeObjects(data[index], data[index + 1]));
-    }
-    return uniqueSalesData;
+    }) as SaleItem[];
   }
 
   /**
@@ -48,12 +57,12 @@ export default class SamsDataManager {
    * @param {SaleItem[]} data - Array of SalesItem objects.
    * @returns {SaleItem[]} - The sales data with the calculated discounts
    */
-  public calculateItemsDiscount(data: SaleItem[]): SaleItem[] {
+  private calculateItemsDiscount(data: SaleItem[]): SaleItem[] {
     const itemsWithDiscount: SaleItem[] = [];
 
     data.forEach(item => {
-      const lastPrice = parseFloat(item.lastPrice);
-      const finalPrice = parseFloat(item.finalPrice);
+      const lastPrice = parseFloat(item.lastPrice[0]);
+      const finalPrice = parseFloat(item.finalPrice[0]);
 
       const discount = (((lastPrice - finalPrice) / lastPrice) * 100).toFixed(
         2
@@ -78,12 +87,12 @@ export default class SamsDataManager {
    * @param {SaleItem[]} data - The data to convert
    * @returns  {SaleItem[]} - The sales data with the date string
    */
-  public convertItemTimeStampToDate(data: SaleItem[]): SaleItem[] {
+  private convertItemTimeStampToDate(data: SaleItem[]): SaleItem[] {
     const itemsWithDate: SaleItem[] = [];
     data.forEach(item => {
       if (item.saleExpiresAt) {
-        const timeStamp = parseInt(item.saleExpiresAt);
-        item.saleExpiresAt = convertTimeStampToDate(timeStamp);
+        const timeStamp = parseInt(item.saleExpiresAt[0]);
+        item.saleExpiresAt[0] = convertTimeStampToDate(timeStamp);
         itemsWithDate.push(item);
       }
     });
