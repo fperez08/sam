@@ -4,6 +4,12 @@ export const pipe =
   (initialValue: any) =>
     functions.reduce((acc, fn) => fn(acc), initialValue);
 
+/**
+ * Returns the value of a property of an object, or an empty string if the property does not exist.
+ * @param obj - The object from which to retrieve the property value.
+ * @param propertyName - The name of the property to retrieve.
+ * @returns The value of the property, or an empty string if the property does not exist.
+ */
 export function getPropertyValue(
   obj: {[key: string]: unknown},
   propertyName: string
