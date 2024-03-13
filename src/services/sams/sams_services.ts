@@ -3,7 +3,7 @@ import HttpClient from '../../http/http_client';
 import type {SaleItemAttributes} from '../../models/sams_data_models';
 import axios from 'axios';
 import {SamsServiceGetSalesDataError} from '../../errors/sams_errors';
-const jp = require('jsonpath');
+const jsonPath = require('jsonpath');
 export default class SamsService extends HttpClient {
   constructor(config: AxiosRequestConfig) {
     super(config);
@@ -18,7 +18,7 @@ export default class SamsService extends HttpClient {
     try {
       const response = await this.get('sams/department/rebajas/_/N-akm');
       if (!axios.isAxiosError(response)) {
-        return jp.query(response.data, '$..attributes');
+        return jsonPath.query(response.data, '$..attributes');
       } else {
         throw new SamsServiceGetSalesDataError(response.message);
       }

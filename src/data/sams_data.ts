@@ -5,7 +5,7 @@ export default class SamsDataManager {
   private data: SaleItemAttributes[];
   constructor(data: SaleItemAttributes[]) {
     this.checkIsEmpty(data);
-    this.data = this.mergeSalesItemsAttributes(data);
+    this.data = this.mergeSaleItemsAttributes(data);
   }
 
   /**
@@ -26,7 +26,7 @@ export default class SamsDataManager {
    * @param data - The array of SaleItemAttributes to merge
    * @returns The merged array of SaleItemAttributes
    */
-  private mergeSalesItemsAttributes(data: SaleItemAttributes[]) {
+  private mergeSaleItemsAttributes(data: SaleItemAttributes[]) {
     const mergedSalesItemAttributes = [];
     for (let index = 0; index < data.length; index += 2) {
       mergedSalesItemAttributes.push({
