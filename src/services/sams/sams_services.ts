@@ -1,8 +1,8 @@
 import type {AxiosRequestConfig} from 'axios';
 import HttpClient from '../../http/http_client';
-import type {SaleItemAttributes} from '../../models/sams_data_models';
+import type {ItemAttributes} from '../../models/sams_data_models';
 import axios from 'axios';
-import {SamsServiceGetSalesDataError} from '../../errors/sams_errors';
+import {SamsServiceGetSalesDataError} from '../../errors/errors';
 const jsonPath = require('jsonpath');
 export default class SamsService extends HttpClient {
   constructor(config: AxiosRequestConfig) {
@@ -14,7 +14,7 @@ export default class SamsService extends HttpClient {
    *
    * @returns A Promise that resolves to the API response, or rejects with an error.
    */
-  public async getSales(): Promise<SaleItemAttributes[]> {
+  public async getSales(): Promise<ItemAttributes[]> {
     try {
       const response = await this.get('sams/department/rebajas/_/N-akm');
       if (!axios.isAxiosError(response)) {
