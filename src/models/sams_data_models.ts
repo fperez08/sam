@@ -10,6 +10,6 @@ export interface SaleItem {
   priceDifference?: string;
 }
 
-export interface SaleItemAttributes {
+export interface ItemAttributes {
   [key: string]: unknown;
 }
