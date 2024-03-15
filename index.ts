@@ -20,7 +20,7 @@ for (let index = 0; index < CONFIGS.length; index++) {
   const samsService = new SamsService(CONFIGS[index].request_config);
   console.log('Starting Sams WebScraper...');
 
-  const response = await samsService.getProductsOnSale();
+  const response = await samsService.getProductsOnSale(CONFIGS[index].path);
   console.log('Response get from sales...');
   if (response.length === 0) {
     console.log(`${CONFIGS[index].name} has no products`);
