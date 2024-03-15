@@ -1,4 +1,4 @@
-import type {SaleItem, ItemAttributes} from '../models/sams_data_models';
+import type {SaleProduct, ProductAttributes} from '../models/sams_data_models';
 import {
   getPropertyValue,
   convertTimeStampToDate,
@@ -7,67 +7,76 @@ import {
 } from '../utils/helper';
 
 /**
- *  Merges the attributes of each item in the given data array.
- * @param data  - An array of ItemAttributes objects.
- * @returns - An array of ItemAttributes objects.
+ * Merges an array of product attributes into a single array.
+ *
+ * @param data - The array of product attributes to merge.
+ * @returns The merged array of product attributes.
  */
-export function mergeItemAttributes(data: ItemAttributes[]) {
+export function mergeProductAttributes(data: ProductAttributes[]) {
   checkIfArrayIsEmpty(data);
-  const mergedItemAttributes = [];
+  const mergedProductAttributes = [];
   for (let index = 0; index < data.length; index += 2) {
-    mergedItemAttributes.push({
+    mergedProductAttributes.push({
       ...data[index],
       ...data[index + 1],
     });
   }
-  return mergedItemAttributes;
+  return mergedProductAttributes;
 }
 
 /**
- * Returns an array of SaleItem objects that are in stock and suitable for sending in an email.
- * @param data - An array of ItemAttributes objects.
- * @returns {SaleItem[]} An array of SaleItem objects.
+ * Retrieves sale products for email.
+ *
+ * @param data - The array of product attributes.
+ * @returns An array of sale products.
  */
-export function getSaleItemsForEmail(data: ItemAttributes[]): SaleItem[] {
+export function getSaleProductsForEmail(
+  data: ProductAttributes[]
+): SaleProduct[] {
   checkIfArrayIsEmpty(data);
-  const salesItemsInStock = data.filter(
-    item =>
-      !Object.prototype.hasOwnProperty.call(item, 'No_Disponible_and_Remind_Me')
+  const saleProductsInStock = data.filter(
+    product =>
+      !Object.prototype.hasOwnProperty.call(
+        product,
+        'No_Disponible_and_Remind_Me'
+      )
   );
-  const saleItems = getSaleItems(salesItemsInStock);
-  return pipe(calculateItemsDiscount, convertItemTimeStampToDate)(saleItems);
+  const saleProducts = getSaleItems(saleProductsInStock);
+  return pipe(
+    calculateProductsDiscount,
+    convertItemTimeStampToDate
+  )(saleProducts);
 }
 
 /**
- * Extract the data for a SaleItem
- *
- * @param data - SaleItem Attributes array
- * @returns SaleItem array.
+ * Retrieves the sale products from the given data array.
+ * @param data - An array of product attributes.
+ * @returns An array of sale products.
  */
-export function getSaleItems(data: ItemAttributes[]): SaleItem[] {
+export function getSaleItems(data: ProductAttributes[]): SaleProduct[] {
   checkIfArrayIsEmpty(data);
-  return data.map(item => {
+  return data.map(product => {
     return {
-      name: getPropertyValue(item, 'skuDisplayName'),
-      displayName: getPropertyValue(item, 'product.displayName'),
-      lastPrice: getPropertyValue(item, 'sku.lastPrice'),
-      finalPrice: getPropertyValue(item, 'sku.finalPrice'),
-      productPromotions: getPropertyValue(item, 'product.promotions'),
-      saleRemainingTime: getPropertyValue(item, 'eventRemainingTime'),
-      saleExpiresAt: getPropertyValue(item, 'eventExpiresAt'),
+      name: getPropertyValue(product, 'skuDisplayName'),
+      displayName: getPropertyValue(product, 'product.displayName'),
+      lastPrice: getPropertyValue(product, 'sku.lastPrice'),
+      finalPrice: getPropertyValue(product, 'sku.finalPrice'),
+      productPromotions: getPropertyValue(product, 'product.promotions'),
+      saleRemainingTime: getPropertyValue(product, 'eventRemainingTime'),
+      saleExpiresAt: getPropertyValue(product, 'eventExpiresAt'),
     };
-  }) as SaleItem[];
+  }) as SaleProduct[];
 }
 
 /**
- * Calculates the discount for each item in the given sales data.
+ * Calculates the discount for each product in the given sales data.
  *
- * @param {SaleItem[]} data - Array of SalesItem objects.
- * @returns {SaleItem[]} - The sales data with the calculated discounts
+ * @param {SaleProduct[]} data - Array of SalesItem objects.
+ * @returns {SaleProduct[]} - The sales data with the calculated discounts
  */
-export function calculateItemsDiscount(data: SaleItem[]): SaleItem[] {
+export function calculateProductsDiscount(data: SaleProduct[]): SaleProduct[] {
   checkIfArrayIsEmpty(data);
-  const itemsWithDiscount: SaleItem[] = [];
+  const productsWithDiscount: SaleProduct[] = [];
 
   data.forEach(item => {
     const lastPrice = parseFloat(item.lastPrice[0]);
@@ -76,63 +85,63 @@ export function calculateItemsDiscount(data: SaleItem[]): SaleItem[] {
     const discount = (((lastPrice - finalPrice) / lastPrice) * 100).toFixed(2);
     const priceDifference = (lastPrice - finalPrice).toFixed(2);
 
-    const itemWithDiscount: SaleItem = {
+    const productWithDiscount: SaleProduct = {
       ...item,
       discount: discount,
       priceDifference: priceDifference,
     };
 
-    itemsWithDiscount.push(itemWithDiscount);
+    productsWithDiscount.push(productWithDiscount);
   });
 
-  return itemsWithDiscount;
+  return productsWithDiscount;
 }
 
 /**
  *  Converts the unix timestamp of each item to a date string.
  *
- * @param {SaleItem[]} data - The data to convert
- * @returns  {SaleItem[]} - The sales data with the date string
+ * @param {SaleProduct[]} data - The data to convert
+ * @returns  {SaleProduct[]} - The sales data with the date string
  */
-export function convertItemTimeStampToDate(data: SaleItem[]): SaleItem[] {
+export function convertItemTimeStampToDate(data: SaleProduct[]): SaleProduct[] {
   checkIfArrayIsEmpty(data);
-  const itemsWithDate: SaleItem[] = [];
-  data.forEach(item => {
-    if (item.saleExpiresAt) {
-      const timeStamp = parseInt(item.saleExpiresAt[0]);
-      item.saleExpiresAt[0] = convertTimeStampToDate(timeStamp);
-      itemsWithDate.push(item);
+  const productsWithDate: SaleProduct[] = [];
+  data.forEach(product => {
+    if (product.saleExpiresAt) {
+      const timeStamp = parseInt(product.saleExpiresAt[0]);
+      product.saleExpiresAt[0] = convertTimeStampToDate(timeStamp);
+      productsWithDate.push(product);
     }
   });
-  return itemsWithDate;
+  return productsWithDate;
 }
 
 /**
- * Returns a new array with all elements that match the given condition.
- * @param data - The array to filter
- * @param condition - The condition to test each element
- * @returns A new array with all elements that match the condition
- */
-export function getSaleItemsWithDiscountAboveOrEqualTo(
-  data: SaleItem[],
-  discount: number
-): SaleItem[] {
-  return data.filter(item => {
-    if (item.discount) {
-      return parseInt(item.discount) >= discount;
-    }
-  });
-}
-
-/**
- * Sorts an array of SaleItems by discount in descending order.
+ * Filters an array of SaleProducts by discount or promotion.
  *
- * @param data - The array of SaleItems to be sorted.
- * @returns A new array of SaleItems sorted by discount in descending order.
+ * @param data - The array of SaleProducts to be filtered.
+ * @returns A new array of SaleProducts filtered by discount or promotion.
  */
-export function sortSaleItemsByDiscountDescending(
-  data: SaleItem[]
-): SaleItem[] {
+export function filterSaleProductsByDiscountOrPromotion(
+  data: SaleProduct[]
+): SaleProduct[] {
+  return data.filter(product => {
+    const discount = 20;
+    if (product.discount) {
+      return isDiscountAboveOrEqualTo(product.discount, discount);
+    }
+  });
+}
+
+/**
+ * Sorts an array of SaleProducts by discount in descending order.
+ *
+ * @param data - The array of SaleProducts to be sorted.
+ * @returns A new array of SaleProducts sorted by discount in descending order.
+ */
+export function sortSaleProductsByDiscountDescending(
+  data: SaleProduct[]
+): SaleProduct[] {
   checkIfArrayIsEmpty(data);
   const sortedItems = [...data];
   sortedItems.sort((a, b) => {
@@ -141,4 +150,12 @@ export function sortSaleItemsByDiscountDescending(
     return discountB - discountA;
   });
   return sortedItems;
+}
+
+export function isDiscountAboveOrEqualTo(
+  actualDiscount: string,
+  expectDiscount: number
+) {
+  if (!actualDiscount) return false;
+  return parseInt(actualDiscount) >= expectDiscount;
 }
