@@ -88,12 +88,12 @@ describe('convertTimeStampToDate', () => {
 });
 
 describe('checkIfArrayIsEmpty', () => {
-  test('should throw an error if the array is empty', () => {
+  test('should return an empty array if the array is empty', () => {
     // Arrange
     const data: unknown[] = [];
 
     // Act & Assert
-    expect(() => checkIfArrayIsEmpty(data)).toThrow('Empty Array provided');
+    expect(checkIfArrayIsEmpty(data)).toEqual([]);
   });
 
   test('should not throw an error if the array is not empty', () => {
