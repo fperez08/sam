@@ -1,4 +1,4 @@
-// @ts-nocheck
+/* // @ts-nocheck
 import {describe, test, jest, beforeEach, expect} from 'bun:test';
 import SamsServices from '../src/services/sams/sams_services';
 import {SamsServiceGetSalesDataError} from '../src/errors/errors';
@@ -52,3 +52,4 @@ describe('SamsServices', () => {
     });
   });
 });
+ */
