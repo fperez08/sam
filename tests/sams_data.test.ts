@@ -335,9 +335,7 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
       },
     ];
 
-    const discount = 20;
-
-    expect(filterSaleProductsByDiscountOrPromotion(data, discount)).toEqual([]);
+    expect(filterSaleProductsByDiscountOrPromotion(data)).toEqual([]);
   });
 });
 describe('sortSaleItemsByDiscountDescending', () => {
