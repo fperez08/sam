@@ -10,13 +10,14 @@ export default class SamsService extends HttpClient {
   }
 
   /**
-   * Fetches the products on sale for a given category.
-   * @param categoryId - The category id of the products on sale.
-   * @returns - An array of ItemAttributes objects.
+   * Retrieves the products on sale from the specified path.
+   * @param path - The path to retrieve the products on sale from.
+   * @returns A promise that resolves to an array of ProductAttributes representing the products on sale.
+   * @throws {SamsServiceGetSalesDataError} If there is an error retrieving the products on sale.
    */
-  public async getProductsOnSale(): Promise<ProductAttributes[]> {
+  public async getProductsOnSale(path: string): Promise<ProductAttributes[]> {
     try {
-      const response = await this.get('sams/department/rebajas/_/N-akm');
+      const response = await this.get(path);
       if (!axios.isAxiosError(response)) {
         return jsonPath.query(response.data, '$..attributes');
       } else {
