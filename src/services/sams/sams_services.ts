@@ -19,7 +19,9 @@ export default class SamsService extends HttpClient {
     try {
       const response = await this.get(path);
       if (!axios.isAxiosError(response)) {
-        return jsonPath.query(response.data, '$..attributes');
+        const data = jsonPath.query(response.data, '$..attributes');
+        console.log(path, data);
+        return data;
       } else {
         throw new SamsServiceGetSalesDataError(response.message);
       }
