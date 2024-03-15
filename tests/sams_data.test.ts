@@ -11,6 +11,7 @@ import type {
   ProductAttributes,
   SaleProduct,
 } from '../src/models/sams_data_models';
+import {describe, expect, test} from 'bun:test';
 
 describe('mergeItemAttributes', () => {
   test('should merge item attributes correctly', () => {
