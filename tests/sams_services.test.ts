@@ -26,7 +26,7 @@ describe('SamsServices', () => {
       samsServices.get = jest.fn().mockResolvedValue(expectedResponse);
 
       // Act
-      const result = await samsServices.getSales();
+      const result = await samsServices.getProductsOnSale();
 
       // Assert
       expect(result[0]).toEqual(expectedResponse.data.attributes);
@@ -43,7 +43,7 @@ describe('SamsServices', () => {
       samsServices.get = jest.fn().mockRejectedValue(expectedError);
 
       // Act and Assert
-      await expect(samsServices.getSales()).rejects.toThrow(
+      await expect(samsServices.getProductsOnSale()).rejects.toThrow(
         SamsServiceGetSalesDataError
       );
       expect(samsServices.get).toHaveBeenCalledWith(
