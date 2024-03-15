@@ -9,30 +9,29 @@ import {
   SALES_EMAIL_TABLE_HEADERS,
 } from './src/config/email_config';
 import {
-  getSaleItemsForEmail,
-  mergeItemAttributes,
-  getSaleItemsWithDiscountAboveOrEqualTo,
-  sortSaleItemsByDiscountDescending,
+  getSaleProductsForEmail,
+  mergeProductAttributes,
+  filterSaleProductsByDiscountOrPromotion,
+  sortSaleProductsByDiscountDescending,
 } from './src/data/sams_data';
 import {pipe} from './src/utils/helper';
 
 const samsService = new SamsService(SAMS_SERVICE_CONFIG);
-const DISCOUNT = 20;
+const categoryId = 'cat3030008';
 console.log('Starting Sams WebScraper...');
 
-const response = await samsService.getSales();
+const response = await samsService.getProductsOnSale(categoryId);
 console.log('Response get from sales...');
-const samsSalesData = pipe(mergeItemAttributes, getSaleItemsForEmail)(response);
-const saleItemsWithHigDiscount = getSaleItemsWithDiscountAboveOrEqualTo(
-  samsSalesData,
-  DISCOUNT
-);
-if (saleItemsWithHigDiscount.length > 0) {
-  const sortedSaleItems = sortSaleItemsByDiscountDescending(
-    saleItemsWithHigDiscount
-  );
-  console.log('🚀 ~ saleItemsWithHigDiscount:', sortedSaleItems);
-  const table = generateHtmlTable(sortedSaleItems, SALES_EMAIL_TABLE_HEADERS);
+const ProductsOnSale = pipe(
+  mergeProductAttributes,
+  getSaleProductsForEmail,
+  filterSaleProductsByDiscountOrPromotion,
+  sortSaleProductsByDiscountDescending
+)(response);
+
+if (ProductsOnSale.length > 0) {
+  console.log('🚀 ~ pantryProductsOnSale:', ProductsOnSale);
+  const table = generateHtmlTable(ProductsOnSale, SALES_EMAIL_TABLE_HEADERS);
   EMAIL_OPTIONS.html = table;
   console.log('Sending email...');
   const emailService = new EmailService(TRANSPORTER_CONFIG);
