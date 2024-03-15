@@ -112,8 +112,9 @@ export function convertItemTimeStampToDate(data: SaleProduct[]): SaleProduct[] {
       const timeStamp = parseInt(product.saleExpiresAt[0]);
       product.saleExpiresAt[0] = convertTimeStampToDate(timeStamp);
       productsWithDate.push(product);
+    } else {
+      productsWithDate.push(product);
     }
-    productsWithDate.push(product);
   });
   return productsWithDate;
 }
