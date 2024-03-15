@@ -4,8 +4,8 @@ import {
   getSaleItems,
   calculateProductsDiscount,
   convertItemTimeStampToDate,
-  filterSaleProductsByDiscountOrPromotion,
-  sortSaleProductsByDiscountDescending,
+  filterSaleProductsByDiscount,
+  sortSaleProductsByPriceDiffDescending,
 } from '../src/data/sams_data';
 import type {
   ProductAttributes,
@@ -301,7 +301,7 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
       },
     ];
 
-    const saleItems = filterSaleProductsByDiscountOrPromotion(data);
+    const saleItems = filterSaleProductsByDiscount(data);
 
     expect(saleItems).toEqual(expectedSaleItems);
   });
@@ -332,7 +332,7 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
       },
     ];
 
-    expect(filterSaleProductsByDiscountOrPromotion(data)).toEqual([]);
+    expect(filterSaleProductsByDiscount(data)).toEqual([]);
   });
 });
 describe('sortSaleItemsByDiscountDescending', () => {
@@ -409,7 +409,7 @@ describe('sortSaleItemsByDiscountDescending', () => {
       },
     ];
 
-    const sortedItems = sortSaleProductsByDiscountDescending(data);
+    const sortedItems = sortSaleProductsByPriceDiffDescending(data);
 
     expect(sortedItems).toEqual(expectedSortedItems);
   });
@@ -417,6 +417,6 @@ describe('sortSaleItemsByDiscountDescending', () => {
   test('should throw an error if data is empty', () => {
     const data: SaleProduct[] = [];
 
-    expect(sortSaleProductsByDiscountDescending(data)).toEqual([]);
+    expect(sortSaleProductsByPriceDiffDescending(data)).toEqual([]);
   });
 });

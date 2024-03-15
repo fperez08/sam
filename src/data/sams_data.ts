@@ -122,7 +122,7 @@ export function convertItemTimeStampToDate(data: SaleProduct[]): SaleProduct[] {
  * @param data - The array of SaleProducts to be filtered.
  * @returns A new array of SaleProducts filtered by discount or promotion.
  */
-export function filterSaleProductsByDiscountOrPromotion(
+export function filterSaleProductsByDiscount(
   data: SaleProduct[]
 ): SaleProduct[] {
   return data.filter(product => {
@@ -139,14 +139,14 @@ export function filterSaleProductsByDiscountOrPromotion(
  * @param data - The array of SaleProducts to be sorted.
  * @returns A new array of SaleProducts sorted by discount in descending order.
  */
-export function sortSaleProductsByDiscountDescending(
+export function sortSaleProductsByPriceDiffDescending(
   data: SaleProduct[]
 ): SaleProduct[] {
   checkIfArrayIsEmpty(data);
   const sortedItems = [...data];
   sortedItems.sort((a, b) => {
-    const discountA = parseFloat(a.discount as string);
-    const discountB = parseFloat(b.discount as string);
+    const discountA = parseFloat(a.priceDifference as string);
+    const discountB = parseFloat(b.priceDifference as string);
     return discountB - discountA;
   });
   return sortedItems;
