@@ -106,6 +106,7 @@ export function calculateProductsDiscount(data: SaleProduct[]): SaleProduct[] {
  */
 export function convertItemTimeStampToDate(data: SaleProduct[]): SaleProduct[] {
   checkIfArrayIsEmpty(data);
+  if (!data.some(product => product.saleExpiresAt)) return data;
   const productsWithDate: SaleProduct[] = [];
   data.forEach(product => {
     if (product.saleExpiresAt) {
@@ -113,6 +114,7 @@ export function convertItemTimeStampToDate(data: SaleProduct[]): SaleProduct[] {
       product.saleExpiresAt[0] = convertTimeStampToDate(timeStamp);
       productsWithDate.push(product);
     }
+    productsWithDate.push(product);
   });
   return productsWithDate;
 }
