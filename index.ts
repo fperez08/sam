@@ -11,8 +11,7 @@ import {
 import {
   getSaleProductsForEmail,
   mergeProductAttributes,
-  filterSaleProductsByDiscountOrPromotion,
-  sortSaleProductsByDiscountDescending,
+  sortSaleProductsByPriceDiffDescending,
 } from './src/data/sams_data';
 import {pipe} from './src/utils/helper';
 
@@ -21,23 +20,17 @@ for (let index = 0; index < CONFIGS.length; index++) {
   console.log('Starting Sams WebScraper...');
 
   const response = await samsService.getProductsOnSale(CONFIGS[index].path);
-  console.log('🚀 ~ response:', response);
   console.log('Response get from sales...');
   if (response.length === 0) {
     console.log(`${CONFIGS[index].name} has no products`);
     continue;
   }
 
-  const dataTransform = CONFIGS[index].name.includes('20 de descuento')
-    ? pipe(
-        mergeProductAttributes,
-        getSaleProductsForEmail,
-        filterSaleProductsByDiscountOrPromotion,
-        sortSaleProductsByDiscountDescending
-      )
-    : pipe(mergeProductAttributes, getSaleProductsForEmail);
-
-  const productsOnSale = dataTransform(response);
+  const productsOnSale = pipe(
+    mergeProductAttributes,
+    getSaleProductsForEmail,
+    sortSaleProductsByPriceDiffDescending
+  )(response);
 
   if (productsOnSale.length > 0) {
     console.log('🚀 ~ productsOnSale:', productsOnSale[0]);
