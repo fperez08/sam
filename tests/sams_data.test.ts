@@ -285,27 +285,26 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
         productPromotions: ['Promotion 12', 'Promotion 2'],
         saleRemainingTime: ['1939082'],
         saleExpiresAt: ['1639082'],
-        discount: '9.98',
+        discount: '29.98',
         priceDifference: '100.00',
       },
     ];
 
-    const discount = 10;
     const expectedSaleItems = [
       {
-        name: ['Item 1'],
-        displayName: ['Item 1'],
-        lastPrice: ['100'],
-        finalPrice: ['90'],
-        productPromotions: ['Promotion 1', 'Promotion 2'],
-        saleRemainingTime: ['193908'],
-        saleExpiresAt: ['163908'],
-        discount: '10.00',
-        priceDifference: '10.00',
+        name: ['Item 2'],
+        displayName: ['Item 2'],
+        lastPrice: ['1002'],
+        finalPrice: ['902'],
+        productPromotions: ['Promotion 12', 'Promotion 2'],
+        saleRemainingTime: ['1939082'],
+        saleExpiresAt: ['1639082'],
+        discount: '29.98',
+        priceDifference: '100.00',
       },
     ];
 
-    const saleItems = filterSaleProductsByDiscountOrPromotion(data, discount);
+    const saleItems = filterSaleProductsByDiscountOrPromotion(data);
 
     expect(saleItems).toEqual(expectedSaleItems);
   });
