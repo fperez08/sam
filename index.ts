@@ -1,6 +1,6 @@
 require('dotenv').config();
 import SamsService from './src/services/sams/sams_services';
-import {SAMS_SERVICE_CONFIG} from './src/config/sams_request_config';
+import {CONFIGS} from './src/config/sams_request_config';
 import EmailService from './src/services/email_service';
 import {generateHtmlTable} from './src/utils/html';
 import {
@@ -16,24 +16,35 @@ import {
 } from './src/data/sams_data';
 import {pipe} from './src/utils/helper';
 
-const samsService = new SamsService(SAMS_SERVICE_CONFIG);
-const categoryId = 'cat3030008';
-console.log('Starting Sams WebScraper...');
+for (let index = 0; index < CONFIGS.length; index++) {
+  const samsService = new SamsService(CONFIGS[index].request_config);
+  console.log('Starting Sams WebScraper...');
 
-const response = await samsService.getProductsOnSale(categoryId);
-console.log('Response get from sales...');
-const ProductsOnSale = pipe(
-  mergeProductAttributes,
-  getSaleProductsForEmail,
-  filterSaleProductsByDiscountOrPromotion,
-  sortSaleProductsByDiscountDescending
-)(response);
+  const response = await samsService.getProductsOnSale();
+  console.log('Response get from sales...');
+  if (response.length === 0) {
+    console.log(`${CONFIGS[index].name} has no products`);
+    continue;
+  }
 
-if (ProductsOnSale.length > 0) {
-  console.log('🚀 ~ pantryProductsOnSale:', ProductsOnSale);
-  const table = generateHtmlTable(ProductsOnSale, SALES_EMAIL_TABLE_HEADERS);
-  EMAIL_OPTIONS.html = table;
-  console.log('Sending email...');
-  const emailService = new EmailService(TRANSPORTER_CONFIG);
-  emailService.sendEmail(EMAIL_OPTIONS);
+  const dataTransform = CONFIGS[index].name.includes('20 de descuento')
+    ? pipe(
+        mergeProductAttributes,
+        getSaleProductsForEmail,
+        filterSaleProductsByDiscountOrPromotion,
+        sortSaleProductsByDiscountDescending
+      )
+    : pipe(mergeProductAttributes, getSaleProductsForEmail);
+
+  const productsOnSale = dataTransform(response);
+
+  if (productsOnSale.length > 0) {
+    console.log('🚀 ~ productsOnSale:', productsOnSale[0]);
+    const table = generateHtmlTable(productsOnSale, SALES_EMAIL_TABLE_HEADERS);
+    EMAIL_OPTIONS.subject = `🔥 ${CONFIGS[index].name} 🔥`;
+    EMAIL_OPTIONS.html = table;
+    console.log('Sending email...');
+    const emailService = new EmailService(TRANSPORTER_CONFIG);
+    //emailService.sendEmail(EMAIL_OPTIONS);
+  }
 }
