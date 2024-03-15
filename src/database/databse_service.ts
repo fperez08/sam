@@ -1,4 +1,4 @@
-import type {SaleItem} from '../models/sams_data_models';
+import type {SaleProduct} from '../models/sams_data_models';
 import {Database} from 'bun:sqlite';
 class DataBaseService {
   private db: Database;
@@ -11,7 +11,7 @@ class DataBaseService {
    * @param id the record id
    * @param data the record data
    */
-  public storeSalesData(id: number, data: SaleItem[]) {
+  public storeSalesData(id: number, data: SaleProduct[]) {
     try {
       this.db.run('INSERT OR REPLACE INTO sales (id, data) VALUES (?, ?)', [
         id,
