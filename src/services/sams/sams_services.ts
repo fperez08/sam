@@ -14,11 +14,8 @@ export default class SamsService extends HttpClient {
    * @param categoryId - The category id of the products on sale.
    * @returns - An array of ItemAttributes objects.
    */
-  public async getProductsOnSale(
-    categoryId: string
-  ): Promise<ProductAttributes[]> {
+  public async getProductsOnSale(): Promise<ProductAttributes[]> {
     try {
-      this.config.params['categoryId'] = categoryId;
       const response = await this.get('sams/department/rebajas/_/N-akm');
       if (!axios.isAxiosError(response)) {
         return jsonPath.query(response.data, '$..attributes');
