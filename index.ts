@@ -26,13 +26,14 @@ for (let index = 0; index < CONFIGS.length; index++) {
     continue;
   }
 
-  const productsOnSale = pipe(
-    mergeProductAttributes,
-    getSaleProductsForEmail,
-    sortSaleProductsByPriceDiffDescending
-  )(response);
+  const mergedProducts = mergeProductAttributes(response);
+  console.log('🚀 ~ mergedProducts:', mergedProducts[0]);
+  const emailProducts = getSaleProductsForEmail(mergedProducts);
+  console.log('🚀 ~ emailProducts:', emailProducts[0]);
+  const sortedProducts = sortSaleProductsByPriceDiffDescending(emailProducts);
+  console.log('🚀 ~ sortedProducts:', sortedProducts[0]);
 
-  if (productsOnSale.length > 0) {
+  /* if (productsOnSale.length > 0) {
     console.log('🚀 ~ productsOnSale:', productsOnSale[0]);
     const table = generateHtmlTable(productsOnSale, SALES_EMAIL_TABLE_HEADERS);
     EMAIL_OPTIONS.subject = `🔥 ${CONFIGS[index].name} 🔥`;
@@ -40,5 +41,5 @@ for (let index = 0; index < CONFIGS.length; index++) {
     console.log('Sending email...');
     const emailService = new EmailService(TRANSPORTER_CONFIG);
     //emailService.sendEmail(EMAIL_OPTIONS);
-  }
+  } */
 }
