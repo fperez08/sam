@@ -5,7 +5,7 @@ import {
   calculateProductsDiscount,
   convertItemTimeStampToDate,
   filterSaleProductsByDiscount,
-  sortSaleProductsByPriceDiffDescending,
+  sortSaleProductsByDiscountDescending,
 } from '../src/data/sams_data';
 import type {
   ProductAttributes,
@@ -409,7 +409,7 @@ describe('sortSaleItemsByDiscountDescending', () => {
       },
     ];
 
-    const sortedItems = sortSaleProductsByPriceDiffDescending(data);
+    const sortedItems = sortSaleProductsByDiscountDescending(data);
 
     expect(sortedItems).toEqual(expectedSortedItems);
   });
@@ -417,6 +417,6 @@ describe('sortSaleItemsByDiscountDescending', () => {
   test('should throw an error if data is empty', () => {
     const data: SaleProduct[] = [];
 
-    expect(sortSaleProductsByPriceDiffDescending(data)).toEqual([]);
+    expect(sortSaleProductsByDiscountDescending(data)).toEqual([]);
   });
 });

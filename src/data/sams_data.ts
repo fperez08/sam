@@ -42,7 +42,6 @@ export function getSaleProductsForEmail(
       )
   );
   const saleProducts = getSaleItems(saleProductsInStock);
-  console.log('🚀 ~ saleProducts:', saleProducts);
   return pipe(
     calculateProductsDiscount,
     convertItemTimeStampToDate
@@ -142,14 +141,14 @@ export function filterSaleProductsByDiscount(
  * @param data - The array of SaleProducts to be sorted.
  * @returns A new array of SaleProducts sorted by discount in descending order.
  */
-export function sortSaleProductsByPriceDiffDescending(
+export function sortSaleProductsByDiscountDescending(
   data: SaleProduct[]
 ): SaleProduct[] {
   checkIfArrayIsEmpty(data);
   const sortedItems = [...data];
   sortedItems.sort((a, b) => {
-    const discountA = parseFloat(a.priceDifference as string);
-    const discountB = parseFloat(b.priceDifference as string);
+    const discountA = parseFloat(a.discount as string);
+    const discountB = parseFloat(b.discount as string);
     return discountB - discountA;
   });
   return sortedItems;
