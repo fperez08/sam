@@ -1,13 +1,16 @@
 import {
-  mergeItemAttributes,
-  getSaleItemsForEmail,
+  mergeProductAttributes,
+  getSaleProductsForEmail,
   getSaleItems,
-  calculateItemsDiscount,
+  calculateProductsDiscount,
   convertItemTimeStampToDate,
-  getSaleItemsWithDiscountAboveOrEqualTo,
-  sortSaleItemsByDiscountDescending,
+  filterSaleProductsByDiscountOrPromotion,
+  sortSaleProductsByDiscountDescending,
 } from '../src/data/sams_data';
-import type {ItemAttributes, SaleItem} from '../src/models/sams_data_models';
+import type {
+  ProductAttributes,
+  SaleProduct,
+} from '../src/models/sams_data_models';
 
 describe('mergeItemAttributes', () => {
   test('should merge item attributes correctly', () => {
@@ -23,7 +26,7 @@ describe('mergeItemAttributes', () => {
       {id3: 3, name3: 'Item 3', id4: 4, name4: 'Item 4'},
     ];
 
-    const mergedItemAttributes = mergeItemAttributes(data);
+    const mergedItemAttributes = mergeProductAttributes(data);
 
     expect(mergedItemAttributes).toEqual(expectedMergedItemAttributes);
   });
@@ -40,15 +43,15 @@ describe('mergeItemAttributes', () => {
       {id3: 3, name3: 'Item 3'},
     ];
 
-    const mergedItemAttributes = mergeItemAttributes(data);
+    const mergedItemAttributes = mergeProductAttributes(data);
 
     expect(mergedItemAttributes).toEqual(expectedMergedItemAttributes);
   });
 
   test('should throw an error if data is empty', () => {
-    const data: ItemAttributes[] = [];
+    const data: ProductAttributes[] = [];
 
-    expect(() => mergeItemAttributes(data)).toThrow('Empty Array provided');
+    expect(() => mergeProductAttributes(data)).toThrow('Empty Array provided');
   });
 });
 
@@ -87,7 +90,7 @@ describe('getSalesItemsForEmail', () => {
       },
     ];
 
-    const salesItemsForEmail = getSaleItemsForEmail(data);
+    const salesItemsForEmail = getSaleProductsForEmail(data);
     expect(salesItemsForEmail[0].name).toEqual(
       expectedSalesItemsForEmail[0].name
     );
@@ -100,13 +103,13 @@ describe('getSalesItemsForEmail', () => {
       {id: 3, name: 'Item 3', No_Disponible_and_Remind_Me: true},
     ];
 
-    expect(() => getSaleItemsForEmail(data)).toThrow('Empty Array provided');
+    expect(() => getSaleProductsForEmail(data)).toThrow('Empty Array provided');
   });
 });
 
 describe('getSaleItems', () => {
   test('should throw an error if data is empty', () => {
-    const data: ItemAttributes[] = [];
+    const data: ProductAttributes[] = [];
 
     expect(() => getSaleItems(data)).toThrow('Empty Array provided');
   });
@@ -162,7 +165,7 @@ describe('getSaleItems', () => {
 
 describe('calculateItemsDiscount', () => {
   test('should calculate discount and price difference for each item', () => {
-    const data: SaleItem[] = [
+    const data: SaleProduct[] = [
       {
         name: ['Item 1'],
         displayName: ['Item 1'],
@@ -183,7 +186,7 @@ describe('calculateItemsDiscount', () => {
       },
     ];
 
-    const expectedItemsWithDiscount: SaleItem[] = [
+    const expectedItemsWithDiscount: SaleProduct[] = [
       {
         name: ['Item 1'],
         displayName: ['Item 1'],
@@ -208,21 +211,23 @@ describe('calculateItemsDiscount', () => {
       },
     ];
 
-    const itemsWithDiscount = calculateItemsDiscount(data);
+    const itemsWithDiscount = calculateProductsDiscount(data);
 
     expect(itemsWithDiscount).toEqual(expectedItemsWithDiscount);
   });
 
   test('should throw an error if data is empty', () => {
-    const data: SaleItem[] = [];
+    const data: SaleProduct[] = [];
 
-    expect(() => calculateItemsDiscount(data)).toThrow('Empty Array provided');
+    expect(() => calculateProductsDiscount(data)).toThrow(
+      'Empty Array provided'
+    );
   });
 });
 
 describe('convertItemTimeStampToDate', () => {
   test('should convert saleExpiresAt timestamp to date', () => {
-    const data: SaleItem[] = [
+    const data: SaleProduct[] = [
       {
         name: ['Item 2'],
         displayName: ['Item 2'],
@@ -234,7 +239,7 @@ describe('convertItemTimeStampToDate', () => {
       },
     ];
 
-    const expectedItemsWithDate: SaleItem[] = [
+    const expectedItemsWithDate: SaleProduct[] = [
       {
         name: ['Item 2'],
         displayName: ['Item 2'],
@@ -251,7 +256,7 @@ describe('convertItemTimeStampToDate', () => {
   });
 
   test('should throw an error if data is empty', () => {
-    const data: SaleItem[] = [];
+    const data: SaleProduct[] = [];
 
     expect(() => convertItemTimeStampToDate(data)).toThrow(
       'Empty Array provided'
@@ -260,7 +265,7 @@ describe('convertItemTimeStampToDate', () => {
 });
 describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
   test('should return sale items with discount above or equal to the specified value', () => {
-    const data: SaleItem[] = [
+    const data: SaleProduct[] = [
       {
         name: ['Item 1'],
         displayName: ['Item 1'],
@@ -300,13 +305,13 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
       },
     ];
 
-    const saleItems = getSaleItemsWithDiscountAboveOrEqualTo(data, discount);
+    const saleItems = filterSaleProductsByDiscountOrPromotion(data, discount);
 
     expect(saleItems).toEqual(expectedSaleItems);
   });
 
   test('should return an empty array if no sale items have discount above or equal to the specified value', () => {
-    const data: SaleItem[] = [
+    const data: SaleProduct[] = [
       {
         name: ['Item 1'],
         displayName: ['Item 1'],
@@ -333,12 +338,12 @@ describe('getSaleItemsWithDiscountAboveOrEqualTo', () => {
 
     const discount = 20;
 
-    expect(getSaleItemsWithDiscountAboveOrEqualTo(data, discount)).toEqual([]);
+    expect(filterSaleProductsByDiscountOrPromotion(data, discount)).toEqual([]);
   });
 });
 describe('sortSaleItemsByDiscountDescending', () => {
   test('should sort sale items by discount in descending order', () => {
-    const data: SaleItem[] = [
+    const data: SaleProduct[] = [
       {
         name: ['Item 1'],
         displayName: ['Item 1'],
@@ -374,7 +379,7 @@ describe('sortSaleItemsByDiscountDescending', () => {
       },
     ];
 
-    const expectedSortedItems: SaleItem[] = [
+    const expectedSortedItems: SaleProduct[] = [
       {
         name: ['Item 3'],
         displayName: ['Item 3'],
@@ -410,15 +415,15 @@ describe('sortSaleItemsByDiscountDescending', () => {
       },
     ];
 
-    const sortedItems = sortSaleItemsByDiscountDescending(data);
+    const sortedItems = sortSaleProductsByDiscountDescending(data);
 
     expect(sortedItems).toEqual(expectedSortedItems);
   });
 
   test('should throw an error if data is empty', () => {
-    const data: SaleItem[] = [];
+    const data: SaleProduct[] = [];
 
-    expect(() => sortSaleItemsByDiscountDescending(data)).toThrow(
+    expect(() => sortSaleProductsByDiscountDescending(data)).toThrow(
       'Empty Array provided'
     );
   });
