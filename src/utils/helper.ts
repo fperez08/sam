@@ -1,5 +1,3 @@
-import {ArrayIsEmptyError} from '../errors/errors';
-
 export const pipe =
   (...functions: Function[]) =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,11 +34,10 @@ export function convertTimeStampToDate(timeStamp: number): string {
 }
 
 /**
- * Checks if the given data is empty. If it is, throws an error.
- *
- * @param data The data to check
- * @throws {SamsDataManagerIsEmptyError} If the data is empty
+ * Checks if an array is empty and returns if it is.
+ * @param data - The array to check.
+ * @returns The array if it is not empty.
  */
 export function checkIfArrayIsEmpty(data: unknown[]) {
-  if (data.length === 0) throw new ArrayIsEmptyError('Empty Array provided');
+  if (data.length === 0) return [];
 }
