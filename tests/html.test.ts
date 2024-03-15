@@ -1,4 +1,5 @@
 import {generateHtmlTable} from '../src/utils/html';
+import {describe, test, expect} from 'bun:test';
 
 describe('generateHtmlTable', () => {
   test('should return an empty string when the jsonArray is empty', () => {

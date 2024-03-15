@@ -1,4 +1,5 @@
 import {reverseCasing} from '../src/utils/string';
+import {test, expect} from 'bun:test';
 
 test('reverseCasing should reverse the casing of a string', () => {
   // Arrange
