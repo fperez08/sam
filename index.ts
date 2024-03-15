@@ -11,7 +11,7 @@ import {
 import {
   getSaleProductsForEmail,
   mergeProductAttributes,
-  sortSaleProductsByPriceDiffDescending,
+  sortSaleProductsByDiscountDescending,
 } from './src/data/sams_data';
 import {pipe} from './src/utils/helper';
 
@@ -25,21 +25,23 @@ for (let index = 0; index < CONFIGS.length; index++) {
     console.log(`${CONFIGS[index].name} has no products`);
     continue;
   }
-
-  const mergedProducts = mergeProductAttributes(response);
-  console.log('🚀 ~ mergedProducts:', mergedProducts[0]);
-  const emailProducts = getSaleProductsForEmail(mergedProducts);
-  console.log('🚀 ~ emailProducts:', emailProducts[0]);
-  const sortedProducts = sortSaleProductsByPriceDiffDescending(emailProducts);
-  console.log('🚀 ~ sortedProducts:', sortedProducts[0]);
-
-  /* if (productsOnSale.length > 0) {
-    console.log('🚀 ~ productsOnSale:', productsOnSale[0]);
+  const transformedData = CONFIGS[index].name.includes(
+    'Despensa con descuentos'
+  )
+    ? pipe(
+        mergeProductAttributes,
+        getSaleProductsForEmail,
+        sortSaleProductsByDiscountDescending
+      )
+    : pipe(mergeProductAttributes, getSaleProductsForEmail);
+  const productsOnSale = transformedData(response);
+  if (productsOnSale.length > 0) {
+    console.log('🚀 ~ productsOnSale:', productsOnSale);
     const table = generateHtmlTable(productsOnSale, SALES_EMAIL_TABLE_HEADERS);
     EMAIL_OPTIONS.subject = `🔥 ${CONFIGS[index].name} 🔥`;
     EMAIL_OPTIONS.html = table;
     console.log('Sending email...');
     const emailService = new EmailService(TRANSPORTER_CONFIG);
     //emailService.sendEmail(EMAIL_OPTIONS);
-  } */
+  }
 }

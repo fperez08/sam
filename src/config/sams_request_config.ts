@@ -3,7 +3,7 @@ import {SAMS_HOME_URL} from '../constants/urls';
 
 export const CONFIGS = [
   {
-    name: 'Despensa con 20 de descuento o mas',
+    name: 'Despensa con descuentos',
     path: 'sams/department/rebajas/_/N-akm',
     request_config: {
       baseURL: SAMS_HOME_URL,
