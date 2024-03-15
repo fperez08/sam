@@ -1,6 +1,6 @@
 import type {AxiosRequestConfig} from 'axios';
 import HttpClient from '../../http/http_client';
-import type {ItemAttributes} from '../../models/sams_data_models';
+import type {ProductAttributes} from '../../models/sams_data_models';
 import axios from 'axios';
 import {SamsServiceGetSalesDataError} from '../../errors/errors';
 const jsonPath = require('jsonpath');
@@ -10,12 +10,15 @@ export default class SamsService extends HttpClient {
   }
 
   /**
-   * Makes a GET request to the Sams API endpoint for sales data.
-   *
-   * @returns A Promise that resolves to the API response, or rejects with an error.
+   * Fetches the products on sale for a given category.
+   * @param categoryId - The category id of the products on sale.
+   * @returns - An array of ItemAttributes objects.
    */
-  public async getSales(): Promise<ItemAttributes[]> {
+  public async getProductsOnSale(
+    categoryId: string
+  ): Promise<ProductAttributes[]> {
     try {
+      this.config.params['categoryId'] = categoryId;
       const response = await this.get('sams/department/rebajas/_/N-akm');
       if (!axios.isAxiosError(response)) {
         return jsonPath.query(response.data, '$..attributes');
