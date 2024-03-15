@@ -42,6 +42,6 @@ for (let index = 0; index < CONFIGS.length; index++) {
     EMAIL_OPTIONS.html = table;
     console.log('Sending email...');
     const emailService = new EmailService(TRANSPORTER_CONFIG);
-    //emailService.sendEmail(EMAIL_OPTIONS);
+    emailService.sendEmail(EMAIL_OPTIONS);
   }
 }
