@@ -41,6 +41,7 @@ export function getSaleProductsForEmail(
         'No_Disponible_and_Remind_Me'
       )
   );
+  console.log('🚀 ~ saleProductsInStock:', saleProductsInStock);
   const saleProducts = getSaleItems(saleProductsInStock);
   return pipe(
     calculateProductsDiscount,
