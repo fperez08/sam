@@ -1,4 +1,4 @@
-export interface SaleItem {
+export interface SaleProduct {
   name: string[];
   displayName: string[];
   lastPrice: string[];
@@ -10,6 +10,6 @@ export interface SaleItem {
   priceDifference?: string;
 }
 
-export interface ItemAttributes {
+export interface ProductAttributes {
   [key: string]: unknown;
 }
