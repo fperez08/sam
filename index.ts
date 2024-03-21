@@ -47,7 +47,7 @@ for (let index = 0; index < CONFIGS.length; index++) {
     EMAIL_OPTIONS.html = table;
     console.log(`Sending email: ${subject}...`);
     const emailService = new EmailService(TRANSPORTER_CONFIG);
-    //emailService.sendEmail(EMAIL_OPTIONS);
+    emailService.sendEmail(EMAIL_OPTIONS);
   } else {
     console.log('No changes in the products: ', CONFIGS[index].name);
   }
