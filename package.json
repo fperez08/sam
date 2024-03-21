@@ -16,6 +16,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/lodash": "^4.17.0",
     "@types/nodemailer": "^6.4.14",
     "@types/pg": "^8.11.2",
     "axios": "^1.6.7",
