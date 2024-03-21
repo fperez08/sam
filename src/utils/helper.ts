@@ -1,3 +1,7 @@
+import fs from 'fs';
+// eslint-disable-next-line node/no-extraneous-import
+import {isEqual} from 'lodash';
+
 export const pipe =
   (...functions: Function[]) =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -40,4 +44,47 @@ export function convertTimeStampToDate(timeStamp: number): string {
  */
 export function checkIfArrayIsEmpty(data: unknown[]) {
   if (data.length === 0) return [];
+}
+
+/**
+ * Checks if a file exists at the specified file path.
+ * @param filePath - The path of the file to check.
+ * @returns A boolean indicating whether the file exists or not.
+ */
+export function fileExists(filePath: string) {
+  try {
+    fs.accessSync(`${process.cwd()}${filePath}`, fs.constants.F_OK);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+/**
+ * Saves a JSON object to a file.
+ * @param jsonObj - The JSON object to save.
+ * @param filePath - The file path where the JSON object will be saved.
+ */
+export function saveJsonToFile(jsonObj: unknown, filePath: string) {
+  const jsonString = JSON.stringify(jsonObj, null, 2);
+
+  try {
+    fs.writeFileSync(`${process.cwd()}${filePath}`, jsonString, 'utf-8');
+    console.log(`JSON object saved to ${filePath}`);
+  } catch (error) {
+    console.error(
+      `Error saving JSON object to ${process.cwd()}${filePath}:`,
+      error
+    );
+  }
+}
+
+/**
+ * Compares two arrays and returns whether they are equal.
+ * @param arr1 - The first array to compare.
+ * @param arr2 - The second array to compare.
+ * @returns A boolean indicating whether the arrays are equal or not.
+ */
+export function areArraysEqual(arr1: object[], arr2: object[]): boolean {
+  return isEqual(arr1, arr2);
 }
