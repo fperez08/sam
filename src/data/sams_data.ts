@@ -4,6 +4,9 @@ import {
   convertTimeStampToDate,
   pipe,
   checkIfArrayIsEmpty,
+  fileExists,
+  saveJsonToFile,
+  areArraysEqual,
 } from '../utils/helper';
 
 /**
@@ -161,4 +164,18 @@ export function isDiscountAboveOrEqualTo(
 ) {
   if (!actualDiscount) return false;
   return parseInt(actualDiscount) >= expectDiscount;
+}
+
+export function isDataChanged(currentData: SaleProduct[], path: string) {
+  if (!fileExists(path)) {
+    saveJsonToFile(currentData, path);
+    return true;
+  } else if (fileExists(path)) {
+    const previousData = require(`${process.cwd()}${path}`);
+    if (areArraysEqual(currentData, previousData)) return false;
+    saveJsonToFile(currentData, path);
+    return true;
+  } else {
+    return false;
+  }
 }
