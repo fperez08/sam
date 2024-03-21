@@ -4,6 +4,7 @@ import {SAMS_HOME_URL} from '../constants/urls';
 export const CONFIGS = [
   {
     name: 'Despensa con descuentos',
+    file_path: 'despensa_descuento.json',
     path: 'sams/department/rebajas/_/N-akm',
     request_config: {
       baseURL: SAMS_HOME_URL,
@@ -36,6 +37,7 @@ export const CONFIGS = [
   },
   {
     name: 'Despensa agrega 2 y paga 1',
+    file_path: 'despensa_2paga1.json',
     path: 'sams/department/rebajas/_/N-aknZ1z13oib',
     request_config: {
       baseURL: SAMS_HOME_URL,
@@ -71,6 +73,7 @@ export const CONFIGS = [
   },
   {
     name: 'Despensa ahorra 15 en carrito',
+    file_path: 'despensa_15carrito.json',
     path: 'sams/department/rebajas/_/N-aknZ1z13nmb',
     request_config: {
       baseURL: SAMS_HOME_URL,
