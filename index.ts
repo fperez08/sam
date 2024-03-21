@@ -10,6 +10,7 @@ import {
 } from './src/config/email_config';
 import {
   getSaleProductsForEmail,
+  isDataChanged,
   mergeProductAttributes,
   sortSaleProductsByDiscountDescending,
 } from './src/data/sams_data';
@@ -35,13 +36,17 @@ for (let index = 0; index < CONFIGS.length; index++) {
       )
     : pipe(mergeProductAttributes, getSaleProductsForEmail);
   const productsOnSale = transformedData(response);
-  if (productsOnSale.length > 0) {
+  if (
+    productsOnSale.length > 0 &&
+    isDataChanged(productsOnSale, CONFIGS[index].file_path)
+  ) {
     console.log('🚀 ~ productsOnSale:', productsOnSale);
     const table = generateHtmlTable(productsOnSale, SALES_EMAIL_TABLE_HEADERS);
-    EMAIL_OPTIONS.subject = `🔥 ${CONFIGS[index].name} 🔥`;
+    const subject = `🔥 ${CONFIGS[index].name} 🔥`;
+    EMAIL_OPTIONS.subject = subject;
     EMAIL_OPTIONS.html = table;
-    console.log('Sending email...');
+    console.log(`Sending email: ${subject}...`);
     const emailService = new EmailService(TRANSPORTER_CONFIG);
-    emailService.sendEmail(EMAIL_OPTIONS);
+    //emailService.sendEmail(EMAIL_OPTIONS);
   }
 }
