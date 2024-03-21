@@ -3,6 +3,9 @@ import {
   getPropertyValue,
   convertTimeStampToDate,
   checkIfArrayIsEmpty,
+  fileExists,
+  saveJsonToFile,
+  areArraysEqual,
 } from '../src/utils/helper';
 import {describe, expect, test} from 'bun:test';
 describe('pipe', () => {
@@ -102,5 +105,93 @@ describe('checkIfArrayIsEmpty', () => {
 
     // Act & Assert
     expect(() => checkIfArrayIsEmpty(data)).not.toThrow();
+  });
+});
+
+describe('fileExists', () => {
+  test('should return true if the file exists', () => {
+    // Arrange
+    const filePath = '/.gitignore';
+
+    // Act
+    const result = fileExists(filePath);
+
+    // Assert
+    expect(result).toBe(true);
+  });
+
+  test('should return false if the file does not exist', () => {
+    // Arrange
+    const filePath = '/path/to/nonexistent/file.txt';
+
+    // Act
+    const result = fileExists(filePath);
+
+    // Assert
+    expect(result).toBe(false);
+  });
+});
+
+describe('saveJsonToFile', () => {
+  test('should save the JSON object to the specified file path', () => {
+    // Arrange
+    const jsonObj = {name: 'John', age: 30};
+    const filePath = '/file.json';
+
+    // Act
+    saveJsonToFile(jsonObj, filePath);
+
+    // Assert
+    expect(fileExists(filePath)).toBe(true);
+  });
+
+  test('should handle errors when saving the JSON object', () => {
+    // Arrange
+    const jsonObj = {name: 'John', age: 30};
+    const filePath = '/path/to/nonexistent/directory/file.json';
+
+    // Act
+    saveJsonToFile(jsonObj, filePath);
+
+    // Assert
+    expect(fileExists(filePath)).toBe(false);
+  });
+});
+
+describe('areArraysEqual', () => {
+  test('should return true if the arrays are equal', () => {
+    // Arrange
+    const arr1 = [{id: 1}, {id: 2}, {id: 3}];
+    const arr2 = [{id: 1}, {id: 2}, {id: 3}];
+
+    // Act
+    const result = areArraysEqual(arr1, arr2);
+
+    // Assert
+    expect(result).toBe(true);
+  });
+
+  test('should return false if the arrays are not equal', () => {
+    // Arrange
+    const arr1 = [{id: 1}, {id: 2}, {id: 3}];
+    const arr2 = [{id: 1}, {id: 2}, {id: 4}];
+
+    // Act
+    const result = areArraysEqual(arr1, arr2);
+
+    // Assert
+    expect(result).toBe(false);
+  });
+
+  test('should return false if the arrays have different lengths', () => {
+    // Arrange
+    const arr1 = [{id: 1}, {id: 2}, {id: 3}];
+    const arr2 = [{id: 1}, {id: 2}];
+
+    // Act
+    const result = areArraysEqual(arr1, arr2);
+
+    // Assert
+    expect(result).toBe(false);
   });
 });
