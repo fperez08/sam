@@ -5,7 +5,7 @@ export const CONFIGS = [
   {
     name: 'Despensa con descuentos',
     file_path: '/data/despensa_descuento.json',
-    path: 'sams/department/rebajas/_/N-akm',
+    path: 'sams/family/rebajas/despensa/_/N-akn',
     request_config: {
       baseURL: SAMS_HOME_URL,
       params: {
@@ -13,14 +13,12 @@ export const CONFIGS = [
         centralPts:
           '0000005854,0000006258,0000006215,0000006469,0000004913,0000006513,0000008118,0000006240,0000006297,0000004977,0000006294,0000006206,0000006246,0000006397,0000006233,0000008124,0000004973,0000006211,0000006396,0000006586,0000008121,0000006241,0000004746,0000008240,0000006286,0000006578,0000006310',
         storeId: '0000004944',
-        _: 1710526029528,
+        _: 1711068344803,
       },
       headers: {
         authority: 'www.sams.com.mx',
         accept: 'application/json, text/javascript, */*; q=0.01',
         'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7',
-        cookie:
-          '_pxvid=a9192745-8516-11ee-b751-21627e33d08a; _tt_enable_cookie=1; _ttp=IPGGWi_QV3whnX7Ejx5MvcUMxPi; FPID=FPID2.3.b1uklyMnA1vvd%2BI%2BTgAI4qFRY5w%2FqBhtXVFAqVeh3yQ%3D.1700204288; _cs_c=0; com.silverpop.iMAWebCookie=9822600a-a114-e473-69c5-e48ec4c3523e; mdLogger=false; kampyle_userid=6731-b064-ca8a-9f1a-97bd-3ed5-25b1-a184; attr_source_cookie=www.google.com; _ga_YZ2DWW9405=deleted; BVBRANDID=84c13257-e4d9-4af6-aeb8-805ca43aed34; _gcl_au=1.1.1972520900.1708021160; _gid=GA1.3.107985562.1710461209; FPLC=Gtae%2BULjY80H7pjsGqXVug%2BiCtAKQKcmZf7a8Z1CTyiiX97v%2ByQ9kgoTpcCq9Bh%2B6yPQtHBIz3uNmiOFtHWcgPQUZYGydoO%2BBnwLQZdiUHbp8TuxHT3r2AjwMdKkIw%3D%3D; mtz_visitor_id=a9f427b0851611ee8a71f1604ae9819e; _scid=c14d05b9-d646-4d4b-a81d-80fc8592f274; _scid_r=c14d05b9-d646-4d4b-a81d-80fc8592f274; _ga_N1HN887KY7=GS1.3.1710464995.1.0.1710464995.60.0.0; kndctr_C4C6370453309C960A490D44_AdobeOrg_identity=CiYxNDMzMjk5NTI4ODExMzA2NDI0MDA0MDE5OTMzOTgxNjkzODA5NlIQCL-lov3jMRgBKgNWQTYwA_ABv6Wi_eMx; AMCV_C4C6370453309C960A490D44%40AdobeOrg=-1124106680%7CMCIDTS%7C19798%7CMCMID%7C14332995288113064240040199339816938096%7CMCAAMLH-1711069795%7C7%7CMCAAMB-1711069795%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1710472195s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.2.0; _sctr=1%7C1710396000000; _ga_YZ2DWW9405=deleted; recentlyViewed=[{"displayName":"Shampoo Head & Shoulders Suave y Manejable Control Caspa 2 en 1 1L","id":"000064915","thumbnailImageUrl":"/images/product-images/img_thumb/000064915t.jpg","skuSpecialPrice":"158.56","skuBasePrice":"158.56","isPreOrderable":false,"isOnDemand":false,"skuAvailabilityStatus":"SELLABLE","seoUrl":"/cuidado-del-cabello/shampoo-head-shoulders-suave-y-manejable-control-caspa-2-en-1-1l/000064915","PickupEligible":true,"DeliveryEligible":false,"PickupInStock":true,"DeliveryInStock":false,"expressDeliveryEligible":false,"expressDeliveryInStock":false}]; _evga_6b47=e99884ce54cc0be8.0Na; CLOUD=prod-az-southcentralus-7; JSESSIONID=kbuSIUKthHRdsM25+EtDCk7m.restapp-1998285789-8-2006247539; _abck=9CD2A59587CE2E90C37F565DDF06FC72~0~YAAQiWzNFyy1YjeOAQAADt1LQwtP83uL0YWME9qYYv//ijcLLKOalVmupWx0PXzwlwpa/+uGCpFHojggGpE0/bYEFW6ZH70RaqxAM9u3ylvqiPs45Nnr4E7Ppb/TYEHGinjb5aK4wBjJ0TbYyx3mNs8gd2tjcVRDxSNiBvG+DtksNqzaK3T689pMcox49jN+ixGSmfHOXLjm6/4noLm4KbqUWPNbC+6YNpyz8fMQYGkGKRAB0OEH6tXpacP6WO6w0/oK5SCZMhIK2Y9gVFHK+1F3gJGzEJdBa3fEjQFKzxYqzHBOXDFTlfTfa8/qNC8E71lsuCkXBh7I9Dbf/hyDtlSHbga5op4k1bZqB2tpscTCBhOVqesTu7pPw6++JPHbg7UlU/elJSRAcBDwDdu+DWBXv1CYqXDXhw==~-1~-1~-1; ak_bmsc=30F72ADF4E0083DD4EA2E873AE9F3CCC~000000000000000000000000000000~YAAQiWzNFy21YjeOAQAADt1LQxdLrwfayWYamNlP5MtnWoXCDIEdJpsaQBQLPZvtQgSndxW5BB9pVcV33GvRjERhR7ta8oWZ0u+njTApU3nQP8jLOtFes4iFi+fUYVj5+HA9TiK6oqxTRW33I4EY9puD4v+LXTuiS5UOJqMAI6lnxRA/zkJaDovdehefh/Qltpw5oJvfF1bw0cG3uRkvAR+vpJn50vZ8hCtrmCA7tqR8Eumg4HFUXIBLvPREmXhfefW3+m3Ezu8UR+GQ3wIvOgeO6ASmO4LVGjNQs3dTPgRQlp/Q5v8uMY9nAlr/xhHslUbFY5WwRMQpIaHCG6UkxOd2RODgw3NiFG278R6MWMACIzt0S4Sc0D6HJP7Nl/DWwI2Uwf2HsfBYdg==; bm_sz=3B705C3F23190A04AECC948874DA291B~YAAQiWzNFy61YjeOAQAADt1LQxfa0ceCjNbHxzLpNgr/r6aU2DRLrCRaAJ0pElCIm6g6xVaFVZM4Qjcdp47xVTIogMNU/bktEm+Ea0l8jFfDCzSviQXAdWqwYf7X0joLtXwGn0PM6LG5REAsVnoW0RDSsg3Li4yCw3YjHyaZ6Vi2udFFXaZPVXU12qCt/qOt/WAykaSFWb/9lbHBfTwIKik6jw4+dNKX6+avetlGWTeOubJvIBNGxSGT50uz9wKc4Ulsm0Dxuqf7o5DN23vG5aDuNDhyQ0eHQU67ryve/B13qTsrkI3N/fckJJ10eymn80jjxYG+xx29BnpYs/QTHbS5S96NK7g01Hq+LHKaznB3CdMGZn46nw==~4534576~4538945; pxcts=d75adf25-e2f6-11ee-b81f-3c6ce3684c8b; storeId=0000004944; _px3=42ba96702c5e29a18636e23961b5d25e3c2fd7d29b98314d259c2f358d394365:tgtZzD1qTMUcBol7Lr4oIMpPty7K8F/UYId7Ne68eodGwX6TBBCPSOIUoohmW7uNm8kx3oe7LStvDzaaQsSwkw==:1000:oucv9q5NLGK7VLoVqokNCvxrr27S+DE5LPKYDlH0aba2gmjlSymOHtoKw2+waIghK4gAqnU2atd1BbVb0XXgLYBCWHepZgsWPgtLA7xwcTATJe8kX0vQmJ16MVYkn7Tj0u1/IHUiZImPgS1SOtcGuO/VTIh1fEAIDuXIAN53xmWrlxq3YFeOlAHtz6H6DrVkoVhH8b1LRi26Q02Cop8QaipYRwyvu0MC+4WyXF7I2JU=; _gat_UA-10186874-1=1; com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie=com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie; _dc_gtm_UA-10186874-1=1; FPGSID=1.1710526032.1710526032.G-KC4HTGN8HY.-MSg-wMv0oCKsvODrzySJQ; _uetsid=eb95cb30e25f11eea5cba313469ea668; _uetvid=a9f427b0851611ee8a71f1604ae9819e; com.silverpop.iMA.session=c68a056c-d850-2b6a-50cc-324c7d94ea11; kampyleUserSession=1710526033812; kampyleUserSessionsCount=22; kampyleSessionPageCounter=1; _ga=GA1.3.737918111.1700204288; TS0e68bea5027=08cb8c7367ab2000c7b5cd9a5d7b9c69ff131f9c92a6c1b18593f21aaf386d8e3ae210c8316f29a208a27760ea1130005e2ade9dc40872d5e983dbea1d9d9c314f52569bd18c5b097a7cb68558ed6859bffb09115974e25f9a3e6b86f74be39b; akavpau_vp_sams=1710526638~id=832e6537faefef0138860c4b7533eb12; CL=prod-cdc21; TS01f4281b=0130aff232fbb28cf54d1422b188525d9540f03fa5c8216eb70ff675a4d1ad9b49c8f04502ca34c8495b35634d1708f4c07cc41829; TS01e4bdf1=0130aff232fbb28cf54d1422b188525d9540f03fa5c8216eb70ff675a4d1ad9b49c8f04502ca34c8495b35634d1708f4c07cc41829; TS96155b32027=0800b316f6ab2000fdc2b3d59f98ef88be179648bea409932ce6a34ae2fbcf38340da05e43925836085511ffcc113000aca1c590208ace79079aa37974cf65dceffc9ef99163d2597d440de3ba5e6b596c563ae2fd6bf8f4ae8d6d47f0634801; bm_sv=94C947BBDC716E6D610CD677EAD46FF2~YAAQiWzNFwu6YjeOAQAAMAFMQxcC+WkenxE/D4IvDdJpyeJ4HGRRZ+qmFLKaoQTDM/86fLjVduECLyX4x3TM0oSNbqhsmDvNvEH6w3P5w+QRcgtRpHNMKVt+R+ZZquEskdfCe+uan5anbR55HHvwz0FnQ3qGRaEyedPwYrSq07j2hCauME5W61sCFMYjFGZ8cEwyBo7neq4FabYBUpqUWGRDc5y2INQJfW0BwefTJVJcOVCqNpT/NxfQn1lXNeoWoA==~1; cto_bundle=6VjJAF9mb3RRNExpMTJ6V1JXZElBc3olMkZGOVJHSmExVUg4OFo1NlB0QmxPTm1MOHNZOSUyRjM2eXg0b3ZBUnhrazIxS3huRThiUGdHSnpkZEh1eWp6N1IxNGc5RDhIdXJ2Q0lWcGtHejdRWUVmdWxaTlAwdENjMjNIbnVLOHJLMUtxY3BtJTJCWWJrZktFdyUyQnElMkI5b0FFSW5rJTJGM1pkeFpQNlFBR0p4a2licjRrRjJkcmtvV09TJTJGTDJ1eEFPUmNDVmlqJTJGbXBmWmFQQVh6bFY4dUh0dkJ0JTJCUHp3NXpXVGJZNlolMkYycnBXZnd2Y042ZVRodExKWDNqOVJzYjFIUUtuRFNBJTJCZHBtWElGbg; _pxde=f6a9c942ed36c4f50209b6e451af8a96529fd5d5c3fadddc75c958b95f7e44ea:eyJ0aW1lc3RhbXAiOjE3MTA1MjYwNDY1Njl9; _cs_id=5fe1e08c-d902-a3b9-ae8f-3709ede62b19.1700204289.16.1710526046.1710526031.1499694866.1734368289614.0; _cs_s=4.5.1.1710527846957; com.silverpop.iMA.page_visit=-1137117202:-880065445:47:; _ga_KC4HTGN8HY=GS1.1.1710526031.17.1.1710526047.0.0.0; _ga_YZ2DWW9405=GS1.1.1710526032.16.1.1710526047.45.0.0',
         referer: 'https://www.sams.com.mx/rebajas/despensa/cat3030008',
         'sec-ch-ua':
           "'Not A(Brand';v='99', 'Google Chrome';v='121', 'Chromium';v='121'",
@@ -38,7 +36,7 @@ export const CONFIGS = [
   {
     name: 'Despensa agrega 2 y paga 1',
     file_path: '/data/despensa_2paga1.json',
-    path: 'sams/department/rebajas/_/N-aknZ1z13oib',
+    path: 'sams/family/rebajas/despensa/_/N-aknZ1z13oib',
     request_config: {
       baseURL: SAMS_HOME_URL,
       params: {
@@ -55,8 +53,6 @@ export const CONFIGS = [
         authority: 'www.sams.com.mx',
         accept: 'application/json, text/javascript, */*; q=0.01',
         'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7',
-        cookie:
-          '_pxvid=a9192745-8516-11ee-b751-21627e33d08a; _tt_enable_cookie=1; _ttp=IPGGWi_QV3whnX7Ejx5MvcUMxPi; FPID=FPID2.3.b1uklyMnA1vvd%2BI%2BTgAI4qFRY5w%2FqBhtXVFAqVeh3yQ%3D.1700204288; _cs_c=0; com.silverpop.iMAWebCookie=9822600a-a114-e473-69c5-e48ec4c3523e; mdLogger=false; kampyle_userid=6731-b064-ca8a-9f1a-97bd-3ed5-25b1-a184; attr_source_cookie=www.google.com; _ga_YZ2DWW9405=deleted; BVBRANDID=84c13257-e4d9-4af6-aeb8-805ca43aed34; _gcl_au=1.1.1972520900.1708021160; _gid=GA1.3.107985562.1710461209; FPLC=Gtae%2BULjY80H7pjsGqXVug%2BiCtAKQKcmZf7a8Z1CTyiiX97v%2ByQ9kgoTpcCq9Bh%2B6yPQtHBIz3uNmiOFtHWcgPQUZYGydoO%2BBnwLQZdiUHbp8TuxHT3r2AjwMdKkIw%3D%3D; mtz_visitor_id=a9f427b0851611ee8a71f1604ae9819e; _scid=c14d05b9-d646-4d4b-a81d-80fc8592f274; _scid_r=c14d05b9-d646-4d4b-a81d-80fc8592f274; _ga_N1HN887KY7=GS1.3.1710464995.1.0.1710464995.60.0.0; kndctr_C4C6370453309C960A490D44_AdobeOrg_identity=CiYxNDMzMjk5NTI4ODExMzA2NDI0MDA0MDE5OTMzOTgxNjkzODA5NlIQCL-lov3jMRgBKgNWQTYwA_ABv6Wi_eMx; AMCV_C4C6370453309C960A490D44%40AdobeOrg=-1124106680%7CMCIDTS%7C19798%7CMCMID%7C14332995288113064240040199339816938096%7CMCAAMLH-1711069795%7C7%7CMCAAMB-1711069795%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1710472195s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.2.0; _sctr=1%7C1710396000000; _ga_YZ2DWW9405=deleted; recentlyViewed=[{"displayName":"Shampoo Head & Shoulders Suave y Manejable Control Caspa 2 en 1 1L","id":"000064915","thumbnailImageUrl":"/images/product-images/img_thumb/000064915t.jpg","skuSpecialPrice":"158.56","skuBasePrice":"158.56","isPreOrderable":false,"isOnDemand":false,"skuAvailabilityStatus":"SELLABLE","seoUrl":"/cuidado-del-cabello/shampoo-head-shoulders-suave-y-manejable-control-caspa-2-en-1-1l/000064915","PickupEligible":true,"DeliveryEligible":false,"PickupInStock":true,"DeliveryInStock":false,"expressDeliveryEligible":false,"expressDeliveryInStock":false}]; CLOUD=prod-az-southcentralus-7; JSESSIONID=kbuSIUKthHRdsM25+EtDCk7m.restapp-1998285789-8-2006247539; _abck=9CD2A59587CE2E90C37F565DDF06FC72~0~YAAQiWzNFyy1YjeOAQAADt1LQwtP83uL0YWME9qYYv//ijcLLKOalVmupWx0PXzwlwpa/+uGCpFHojggGpE0/bYEFW6ZH70RaqxAM9u3ylvqiPs45Nnr4E7Ppb/TYEHGinjb5aK4wBjJ0TbYyx3mNs8gd2tjcVRDxSNiBvG+DtksNqzaK3T689pMcox49jN+ixGSmfHOXLjm6/4noLm4KbqUWPNbC+6YNpyz8fMQYGkGKRAB0OEH6tXpacP6WO6w0/oK5SCZMhIK2Y9gVFHK+1F3gJGzEJdBa3fEjQFKzxYqzHBOXDFTlfTfa8/qNC8E71lsuCkXBh7I9Dbf/hyDtlSHbga5op4k1bZqB2tpscTCBhOVqesTu7pPw6++JPHbg7UlU/elJSRAcBDwDdu+DWBXv1CYqXDXhw==~-1~-1~-1; ak_bmsc=30F72ADF4E0083DD4EA2E873AE9F3CCC~000000000000000000000000000000~YAAQiWzNFy21YjeOAQAADt1LQxdLrwfayWYamNlP5MtnWoXCDIEdJpsaQBQLPZvtQgSndxW5BB9pVcV33GvRjERhR7ta8oWZ0u+njTApU3nQP8jLOtFes4iFi+fUYVj5+HA9TiK6oqxTRW33I4EY9puD4v+LXTuiS5UOJqMAI6lnxRA/zkJaDovdehefh/Qltpw5oJvfF1bw0cG3uRkvAR+vpJn50vZ8hCtrmCA7tqR8Eumg4HFUXIBLvPREmXhfefW3+m3Ezu8UR+GQ3wIvOgeO6ASmO4LVGjNQs3dTPgRQlp/Q5v8uMY9nAlr/xhHslUbFY5WwRMQpIaHCG6UkxOd2RODgw3NiFG278R6MWMACIzt0S4Sc0D6HJP7Nl/DWwI2Uwf2HsfBYdg==; bm_sz=3B705C3F23190A04AECC948874DA291B~YAAQiWzNFy61YjeOAQAADt1LQxfa0ceCjNbHxzLpNgr/r6aU2DRLrCRaAJ0pElCIm6g6xVaFVZM4Qjcdp47xVTIogMNU/bktEm+Ea0l8jFfDCzSviQXAdWqwYf7X0joLtXwGn0PM6LG5REAsVnoW0RDSsg3Li4yCw3YjHyaZ6Vi2udFFXaZPVXU12qCt/qOt/WAykaSFWb/9lbHBfTwIKik6jw4+dNKX6+avetlGWTeOubJvIBNGxSGT50uz9wKc4Ulsm0Dxuqf7o5DN23vG5aDuNDhyQ0eHQU67ryve/B13qTsrkI3N/fckJJ10eymn80jjxYG+xx29BnpYs/QTHbS5S96NK7g01Hq+LHKaznB3CdMGZn46nw==~4534576~4538945; pxcts=d75adf25-e2f6-11ee-b81f-3c6ce3684c8b; storeId=0000004944; com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie=com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie; FPGSID=1.1710526032.1710526032.G-KC4HTGN8HY.-MSg-wMv0oCKsvODrzySJQ; com.silverpop.iMA.session=c68a056c-d850-2b6a-50cc-324c7d94ea11; kampyleUserSession=1710526033812; kampyleUserSessionsCount=22; kampyleSessionPageCounter=1; _ga=GA1.3.737918111.1700204288; cto_bundle=6VjJAF9mb3RRNExpMTJ6V1JXZElBc3olMkZGOVJHSmExVUg4OFo1NlB0QmxPTm1MOHNZOSUyRjM2eXg0b3ZBUnhrazIxS3huRThiUGdHSnpkZEh1eWp6N1IxNGc5RDhIdXJ2Q0lWcGtHejdRWUVmdWxaTlAwdENjMjNIbnVLOHJLMUtxY3BtJTJCWWJrZktFdyUyQnElMkI5b0FFSW5rJTJGM1pkeFpQNlFBR0p4a2licjRrRjJkcmtvV09TJTJGTDJ1eEFPUmNDVmlqJTJGbXBmWmFQQVh6bFY4dUh0dkJ0JTJCUHp3NXpXVGJZNlolMkYycnBXZnd2Y042ZVRodExKWDNqOVJzYjFIUUtuRFNBJTJCZHBtWElGbg; com.silverpop.iMA.page_visit=-1137117202:-880065445:47:; _uetsid=eb95cb30e25f11eea5cba313469ea668; _uetvid=a9f427b0851611ee8a71f1604ae9819e; _cs_id=5fe1e08c-d902-a3b9-ae8f-3709ede62b19.1700204289.16.1710526048.1710526031.1499694866.1734368289614.0; _cs_s=5.5.1.1710527848190; CL=prod-cdc7; _ga_KC4HTGN8HY=GS1.1.1710526031.17.1.1710526049.0.0.0; TS0e68bea5027=08cb8c7367ab2000df8244d42028d332b773e3565a9d30689e51fc3494ad2fe94b7c59a5d25d104a08091aaa8d113000ce21a06eadaa6da6ac6a597d33af077b7dbadf51c3890daec6348bfbfc80a677a2723d878a865c454a09fe4d2a9de014; akavpau_vp_sams=1710526649~id=939fb1bb72537558172ff54b6ee185e0; TS01f4281b=0130aff23225badc7d0cc104db625bf3e63d50b071f5d1c256002af06ee1d1ced12010c257d74a68ad61f441d629ab439a2fd5ca1f; TS01e4bdf1=0130aff23225badc7d0cc104db625bf3e63d50b071f5d1c256002af06ee1d1ced12010c257d74a68ad61f441d629ab439a2fd5ca1f; TS96155b32027=0800b316f6ab2000d75dc479962f2b583683ca5e0c261d8588fd110ccd3ee2827d291df99b5db4fd08ca8fcc0211300057257c902866c247732b80acb20dd60c31387c62e09988539f390994dfeb640c97639c779ee20d5531d5debf20646a32; bm_sv=94C947BBDC716E6D610CD677EAD46FF2~YAAQiWzNFy7BYjeOAQAA7S1MQxf9M4O4qHgNTeHRcSxfqwsZ2CNhq45MlFhpohn0PwX2Y0XaUye1PTwl8V0emA9ypzdxU0TmYu7UZeWpeAquU34mGKyMV0sa5MJ1syoronLilWH2FlKMkxKdA8IkwTsLvXv/3+8bix+BmzM16KWTvBzhhjTPNQSLp3XmKblSg/MkxgB5MLjTHW/5B2fg8kLOK/ER/YuinbXtME22cTQn9c/Cf40dN6Kj2iAHgjgdx00=~1; _evgn_6b47=%7B%22puid%22%3A%22sceKyUr4bv_TRWhENYhwYXn-b-cl9TlMxMsfJVfh-YQ%22%7D; _evga_6b47=e99884ce54cc0be8.0Gp; _px3=ccd67da86645573d64483dff0e709b902877b80a1d2cf797826a12e96a3be917:DrqOtxGDa5bUdWI0nb1XcJs7FYucFSMUMVouKq2CtPBFpsehV6Qj1pO4LVLb0TaWySgccdtSPU6VvXX3MbbtVQ==:1000:bkRWovdAe+nY9nAQ55dTWbZ8VomI2sZzPmd5T/hZvLsktM8nbXz7SsL+Q+PJplqvSIw3lRDgZgMYLFK8CyPkALo6dsCpCIseG8x1TB1JzCYIo71QySBNkkQQ7qZXlrcqunVDesNqGhw36h1LmisOkHRlO4zwHYy6OU1Qrcm9MwdPkck4retMOLEtRdcVBjYLuzOHDI1nArb6wBZSRNuZ8awEi93dtSz/qtgO1JEfMBs=; _pxde=e0a2a38db3e47579289fd2d0f632f0e2e8ce01b4767255f65975ceb316370cdb:eyJ0aW1lc3RhbXAiOjE3MTA1MjYyNzE1NjB9; _gat_UA-10186874-1=1; _dc_gtm_UA-10186874-1=1; _ga_YZ2DWW9405=GS1.1.1710526032.16.1.1710526361.51.0.0',
         referer: 'https://www.sams.com.mx/rebajas/despensa/cat3030008',
         'sec-ch-ua':
           "'Not A(Brand';v='99', 'Google Chrome';v='121', 'Chromium';v='121'",
@@ -74,7 +70,7 @@ export const CONFIGS = [
   {
     name: 'Despensa ahorra 15 en carrito',
     file_path: '/data/despensa_15carrito.json',
-    path: 'sams/department/rebajas/_/N-aknZ1z13nmb',
+    path: 'sams/family/rebajas/despensa/_/N-aknZ1z13nmb',
     request_config: {
       baseURL: SAMS_HOME_URL,
       params: {
@@ -91,9 +87,69 @@ export const CONFIGS = [
         authority: 'www.sams.com.mx',
         accept: 'application/json, text/javascript, */*; q=0.01',
         'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7',
-        cookie:
-          '_pxvid=a9192745-8516-11ee-b751-21627e33d08a; _tt_enable_cookie=1; _ttp=IPGGWi_QV3whnX7Ejx5MvcUMxPi; FPID=FPID2.3.b1uklyMnA1vvd%2BI%2BTgAI4qFRY5w%2FqBhtXVFAqVeh3yQ%3D.1700204288; _cs_c=0; com.silverpop.iMAWebCookie=9822600a-a114-e473-69c5-e48ec4c3523e; mdLogger=false; kampyle_userid=6731-b064-ca8a-9f1a-97bd-3ed5-25b1-a184; attr_source_cookie=www.google.com; _ga_YZ2DWW9405=deleted; BVBRANDID=84c13257-e4d9-4af6-aeb8-805ca43aed34; _gcl_au=1.1.1972520900.1708021160; _gid=GA1.3.107985562.1710461209; FPLC=Gtae%2BULjY80H7pjsGqXVug%2BiCtAKQKcmZf7a8Z1CTyiiX97v%2ByQ9kgoTpcCq9Bh%2B6yPQtHBIz3uNmiOFtHWcgPQUZYGydoO%2BBnwLQZdiUHbp8TuxHT3r2AjwMdKkIw%3D%3D; mtz_visitor_id=a9f427b0851611ee8a71f1604ae9819e; _scid=c14d05b9-d646-4d4b-a81d-80fc8592f274; _scid_r=c14d05b9-d646-4d4b-a81d-80fc8592f274; _ga_N1HN887KY7=GS1.3.1710464995.1.0.1710464995.60.0.0; kndctr_C4C6370453309C960A490D44_AdobeOrg_identity=CiYxNDMzMjk5NTI4ODExMzA2NDI0MDA0MDE5OTMzOTgxNjkzODA5NlIQCL-lov3jMRgBKgNWQTYwA_ABv6Wi_eMx; AMCV_C4C6370453309C960A490D44%40AdobeOrg=-1124106680%7CMCIDTS%7C19798%7CMCMID%7C14332995288113064240040199339816938096%7CMCAAMLH-1711069795%7C7%7CMCAAMB-1711069795%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1710472195s%7CNONE%7CMCAID%7CNONE%7CvVersion%7C5.2.0; _sctr=1%7C1710396000000; _ga_YZ2DWW9405=deleted; recentlyViewed=[{"displayName":"Shampoo Head & Shoulders Suave y Manejable Control Caspa 2 en 1 1L","id":"000064915","thumbnailImageUrl":"/images/product-images/img_thumb/000064915t.jpg","skuSpecialPrice":"158.56","skuBasePrice":"158.56","isPreOrderable":false,"isOnDemand":false,"skuAvailabilityStatus":"SELLABLE","seoUrl":"/cuidado-del-cabello/shampoo-head-shoulders-suave-y-manejable-control-caspa-2-en-1-1l/000064915","PickupEligible":true,"DeliveryEligible":false,"PickupInStock":true,"DeliveryInStock":false,"expressDeliveryEligible":false,"expressDeliveryInStock":false}]; CLOUD=prod-az-southcentralus-7; JSESSIONID=kbuSIUKthHRdsM25+EtDCk7m.restapp-1998285789-8-2006247539; _abck=9CD2A59587CE2E90C37F565DDF06FC72~0~YAAQiWzNFyy1YjeOAQAADt1LQwtP83uL0YWME9qYYv//ijcLLKOalVmupWx0PXzwlwpa/+uGCpFHojggGpE0/bYEFW6ZH70RaqxAM9u3ylvqiPs45Nnr4E7Ppb/TYEHGinjb5aK4wBjJ0TbYyx3mNs8gd2tjcVRDxSNiBvG+DtksNqzaK3T689pMcox49jN+ixGSmfHOXLjm6/4noLm4KbqUWPNbC+6YNpyz8fMQYGkGKRAB0OEH6tXpacP6WO6w0/oK5SCZMhIK2Y9gVFHK+1F3gJGzEJdBa3fEjQFKzxYqzHBOXDFTlfTfa8/qNC8E71lsuCkXBh7I9Dbf/hyDtlSHbga5op4k1bZqB2tpscTCBhOVqesTu7pPw6++JPHbg7UlU/elJSRAcBDwDdu+DWBXv1CYqXDXhw==~-1~-1~-1; ak_bmsc=30F72ADF4E0083DD4EA2E873AE9F3CCC~000000000000000000000000000000~YAAQiWzNFy21YjeOAQAADt1LQxdLrwfayWYamNlP5MtnWoXCDIEdJpsaQBQLPZvtQgSndxW5BB9pVcV33GvRjERhR7ta8oWZ0u+njTApU3nQP8jLOtFes4iFi+fUYVj5+HA9TiK6oqxTRW33I4EY9puD4v+LXTuiS5UOJqMAI6lnxRA/zkJaDovdehefh/Qltpw5oJvfF1bw0cG3uRkvAR+vpJn50vZ8hCtrmCA7tqR8Eumg4HFUXIBLvPREmXhfefW3+m3Ezu8UR+GQ3wIvOgeO6ASmO4LVGjNQs3dTPgRQlp/Q5v8uMY9nAlr/xhHslUbFY5WwRMQpIaHCG6UkxOd2RODgw3NiFG278R6MWMACIzt0S4Sc0D6HJP7Nl/DWwI2Uwf2HsfBYdg==; bm_sz=3B705C3F23190A04AECC948874DA291B~YAAQiWzNFy61YjeOAQAADt1LQxfa0ceCjNbHxzLpNgr/r6aU2DRLrCRaAJ0pElCIm6g6xVaFVZM4Qjcdp47xVTIogMNU/bktEm+Ea0l8jFfDCzSviQXAdWqwYf7X0joLtXwGn0PM6LG5REAsVnoW0RDSsg3Li4yCw3YjHyaZ6Vi2udFFXaZPVXU12qCt/qOt/WAykaSFWb/9lbHBfTwIKik6jw4+dNKX6+avetlGWTeOubJvIBNGxSGT50uz9wKc4Ulsm0Dxuqf7o5DN23vG5aDuNDhyQ0eHQU67ryve/B13qTsrkI3N/fckJJ10eymn80jjxYG+xx29BnpYs/QTHbS5S96NK7g01Hq+LHKaznB3CdMGZn46nw==~4534576~4538945; pxcts=d75adf25-e2f6-11ee-b81f-3c6ce3684c8b; storeId=0000004944; com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie=com.ibm.commerce.ubx.idsync.google_gid%2CiMAWebCookie; com.silverpop.iMA.session=c68a056c-d850-2b6a-50cc-324c7d94ea11; kampyleUserSession=1710526033812; kampyleUserSessionsCount=22; kampyleSessionPageCounter=1; _ga=GA1.3.737918111.1700204288; cto_bundle=6VjJAF9mb3RRNExpMTJ6V1JXZElBc3olMkZGOVJHSmExVUg4OFo1NlB0QmxPTm1MOHNZOSUyRjM2eXg0b3ZBUnhrazIxS3huRThiUGdHSnpkZEh1eWp6N1IxNGc5RDhIdXJ2Q0lWcGtHejdRWUVmdWxaTlAwdENjMjNIbnVLOHJLMUtxY3BtJTJCWWJrZktFdyUyQnElMkI5b0FFSW5rJTJGM1pkeFpQNlFBR0p4a2licjRrRjJkcmtvV09TJTJGTDJ1eEFPUmNDVmlqJTJGbXBmWmFQQVh6bFY4dUh0dkJ0JTJCUHp3NXpXVGJZNlolMkYycnBXZnd2Y042ZVRodExKWDNqOVJzYjFIUUtuRFNBJTJCZHBtWElGbg; _evgn_6b47=%7B%22puid%22%3A%22sceKyUr4bv_TRWhENYhwYXn-b-cl9TlMxMsfJVfh-YQ%22%7D; _evga_6b47=e99884ce54cc0be8.0Gp; com.silverpop.iMA.page_visit=132921501:-1137117202:-880065445:47:; TS0e68bea5027=08cb8c7367ab20001cd80b18b37108f8f53e9357d4238f3936826b6e9936b7f736c1e76fa97714dc081762af471130006e244d25081dae60d09a9c43fdae323b78cfbad59ed50b02e57db8a4fa2b71b81a24dbae01a1842a41d5b24f9fcbe820; TS01e4bdf1=0130aff232cbdcbb80c89bfd507af3eda60273924043654c045bab9810e4b7e2482c979e2a0332cc933c1d7d693fb9256b34ea6535; _px3=8d067e9e37b412d4bcef595d890e4796dcc1975d47288d49e8d47275e1af06a4:x8oIrAixSMnfK5fOuwO8BuyyXSU1ev0T5uDw133c3ElPzvCGXqL03lwBYehhlurmvFw90efwZnCXtRP38chFpw==:1000:72hnsAPvu2SYwjFc/JAC2jnROqu22wTlgwHrBl7UPdiVLIL8NjnE4R85VydTj0FIHhmnkJkNKiItdJ2PsPvCpsgMn+SrObleyTDYRXqlDk/DrscY2mcOsmgWsYqpPyMZwOdaZYntSvDMC5/Z208x3L0tq42J37BFYSjOhi1CEZRSoX+wMqi6HrOOXWHTHdQGuHPvrDDd07iQsRtwkmNwRN1n5AF22IXpNs5jHYNzR2U=; _pxde=f3d17c7d511739f7ed0a37f1212bc0b42522b1df745e4564a85986364119a6a8:eyJ0aW1lc3RhbXAiOjE3MTA1MjY5OTMyMjl9; _gat_UA-10186874-1=1; _dc_gtm_UA-10186874-1=1; FPGSID=1.1710526032.1710527196.G-KC4HTGN8HY.-MSg-wMv0oCKsvODrzySJQ; TS01f4281b=0130aff232d78ba10fee7676752c27fc36e0af583c00fcc2743fde88d096662ca128e5cc89f79b0f0ea9e6dbc98b6300e7a4312222; _uetsid=eb95cb30e25f11eea5cba313469ea668; _uetvid=a9f427b0851611ee8a71f1604ae9819e; CL=prod-cdc8; TS96155b32027=0800b316f6ab20008ef5486a38839a669c059b48c99076ccf6d27205ff73894777148d859941e670085fc66d9d11300039ec345e988c81767a19060b2202239b509184cb7de937c8f4e86f72a46de15ba2006e69da6308aa021ca52e009aebf7; _cs_id=5fe1e08c-d902-a3b9-ae8f-3709ede62b19.1700204289.16.1710527201.1710526031.1499694866.1734368289614.0; _cs_s=16.5.1.1710529001514; _ga_KC4HTGN8HY=GS1.1.1710526031.17.1.1710527201.0.0.0; akavpau_vp_sams=1710527810~id=cea1274424c2b1f38e8ce04eab47fcb7; bm_sv=94C947BBDC716E6D610CD677EAD46FF2~YAAQi2zNF/ps7h6OAQAAc+VdQxe/dkYNLQkZNc/JJFiL8Ze+x+1ul74iqtKXJMIhDyAwCYsRY3PX8cuC8BHPi9gwPIACttV3De6MYNFKFobnajtqAP4Xa1akBCrb1k/PTm/hzJhsapK/4/kP7v4M3SSNtkAhczKxofs2+K/Q96pN8Ap3OvcO6O2/ouCR0/TRW341QXLENB6fwnr9wnYNYdcRwQkq/7JpsGHLcczhv/axsOI+5x+++BUvuMRtZ54a7Ck=~1; _ga_YZ2DWW9405=GS1.1.1710526032.16.1.1710527217.38.0.0',
         referer: 'https://www.sams.com.mx/rebajas/despensa/cat3030008',
+        'sec-ch-ua':
+          "'Not A(Brand';v='99', 'Google Chrome';v='121', 'Chromium';v='121'",
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': "'macOS'",
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-origin',
+        'user-agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'x-requested-with': 'XMLHttpRequest',
+      },
+    },
+  },
+  {
+    name: 'Limpieza con descuentos',
+    file_path: '/data/limpieza_descuento.json',
+    path: 'sams/family/rebajas/limpieza/_/N-akr',
+    request_config: {
+      baseURL: SAMS_HOME_URL,
+      params: {
+        categoryId: 'cat3030012',
+        centralPts:
+          '0000005854,0000006258,0000006215,0000006469,0000004913,0000006513,0000008118,0000006240,0000006297,0000004977,0000006294,0000006206,0000006246,0000006397,0000006233,0000008124,0000004973,0000006211,0000006396,0000006586,0000008121,0000006241,0000004746,0000008240,0000006286,0000006578,0000006310',
+        storeId: '0000004944',
+        _: 1711068344791,
+      },
+      headers: {
+        authority: 'www.sams.com.mx',
+        accept: 'application/json, text/javascript, */*; q=0.01',
+        'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7',
+        referer: 'https://www.sams.com.mx/rebajas/limpieza/cat3030012',
+        'sec-ch-ua':
+          "'Not A(Brand';v='99', 'Google Chrome';v='121', 'Chromium';v='121'",
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': "'macOS'",
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-origin',
+        'user-agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'x-requested-with': 'XMLHttpRequest',
+      },
+    },
+  },
+  {
+    name: 'Ultimas piezas con descuentos',
+    file_path: '/data/ultimas_piezas_descuento.json',
+    path: 'sams/family/rebajas/ultimas-piezas/_/N-akz',
+    request_config: {
+      baseURL: SAMS_HOME_URL,
+      params: {
+        categoryId: 'cat3030020',
+        centralPts:
+          '0000005854,0000006258,0000006215,0000006469,0000004913,0000006513,0000008118,0000006240,0000006297,0000004977,0000006294,0000006206,0000006246,0000006397,0000006233,0000008124,0000004973,0000006211,0000006396,0000006586,0000008121,0000006241,0000004746,0000008240,0000006286,0000006578,0000006310',
+        storeId: '0000004944',
+        _: 1711068344795,
+      },
+      headers: {
+        authority: 'www.sams.com.mx',
+        accept: 'application/json, text/javascript, */*; q=0.01',
+        'accept-language': 'en-US,en;q=0.9,es-MX;q=0.8,es;q=0.7',
+        referer: 'https://www.sams.com.mx/rebajas/ultimas-piezas/cat3030020',
         'sec-ch-ua':
           "'Not A(Brand';v='99', 'Google Chrome';v='121', 'Chromium';v='121'",
         'sec-ch-ua-mobile': '?0',
