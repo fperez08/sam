@@ -26,9 +26,11 @@ for (let index = 0; index < CONFIGS.length; index++) {
     console.log(`${CONFIGS[index].name} has no products`);
     continue;
   }
-  const transformedData = CONFIGS[index].name.includes(
-    'Despensa con descuentos'
-  )
+  const transformedData = [
+    'Despensa con descuentos',
+    'Limpieza con descuentos',
+    'Ultimas piezas con descuentos',
+  ].includes(CONFIGS[index].name)
     ? pipe(
         mergeProductAttributes,
         getSaleProductsForEmail,
@@ -47,7 +49,7 @@ for (let index = 0; index < CONFIGS.length; index++) {
     EMAIL_OPTIONS.html = table;
     console.log(`Sending email: ${subject}...`);
     const emailService = new EmailService(TRANSPORTER_CONFIG);
-    //emailService.sendEmail(EMAIL_OPTIONS);
+    emailService.sendEmail(EMAIL_OPTIONS);
   } else {
     console.log('No changes in the products: ', CONFIGS[index].name);
   }
