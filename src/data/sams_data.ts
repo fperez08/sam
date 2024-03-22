@@ -65,7 +65,6 @@ export function getSaleItems(data: ProductAttributes[]): SaleProduct[] {
       lastPrice: getPropertyValue(product, 'sku.lastPrice'),
       finalPrice: getPropertyValue(product, 'sku.finalPrice'),
       productPromotions: getPropertyValue(product, 'product.promotions'),
-      saleRemainingTime: getPropertyValue(product, 'eventRemainingTime'),
       saleExpiresAt: getPropertyValue(product, 'eventExpiresAt'),
     };
   }) as SaleProduct[];
@@ -170,12 +169,10 @@ export function isDataChanged(currentData: SaleProduct[], path: string) {
   if (!fileExists(path)) {
     saveJsonToFile(currentData, path);
     return true;
-  } else if (fileExists(path)) {
+  } else {
     const previousData = require(`${process.cwd()}${path}`);
     if (areArraysEqual(currentData, previousData)) return false;
     saveJsonToFile(currentData, path);
     return true;
-  } else {
-    return false;
   }
 }
