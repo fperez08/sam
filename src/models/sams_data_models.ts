@@ -4,7 +4,6 @@ export interface SaleProduct {
   lastPrice: string[];
   finalPrice: string[];
   productPromotions: string[];
-  saleRemainingTime: string[];
   saleExpiresAt: string[];
   discount?: string;
   priceDifference?: string;
