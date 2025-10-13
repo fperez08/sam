@@ -23,7 +23,7 @@
     "axios-debug-log": "^1.0.0",
     "dotenv": "^16.4.5",
     "jsonpath": "^1.1.1",
-    "nodemailer": "^6.9.11"
+    "nodemailer": "^7.0.7"
   },
   "scripts": {
     "lint": "gts lint",
